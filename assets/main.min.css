@@ -1,2 +1,2 @@
-.container{overflow:hidden}
+.container{overflow:hidden}.container .home-page{position:relative;width:100%;height:100vh}.container .home-page .home-page-img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}.container .home-page .home-page-animoji{position:absolute;top:100px;right:-15%;width:40%}.container .home-page .home-page-tittle{position:absolute;bottom:20px;left:15px;font-family:"Dancing Script";font-size:6em;-webkit-transform:rotate(15deg);transform:rotate(15deg);font-weight:100;color:#fff;line-height:0.7}
 /*# sourceMappingURL=main.min.css.map */
