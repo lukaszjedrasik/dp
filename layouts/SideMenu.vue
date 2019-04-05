@@ -26,7 +26,7 @@ export default {
   top: 0;
   right: -100px;
   width: 0;
-  transition: 2.3s;
+  transition: 0.3s;
   ul {
     display: flex;
     flex-direction: column;
