@@ -45,6 +45,7 @@ export default {
 }
 .slide-menu-off.sideMenuOn {
   position: fixed;
+  right: 0;
   width: 70%;
   height: 100%;
   background-color: #ffcbcf;
