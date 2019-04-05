@@ -2,7 +2,7 @@
   <div class="container">
     <div class="home-page">
       <img class="home-page-img" src="@/assets/img/main-page-bg.webp" alt="nails blog">
-      <img class="home-page-animoji" src="@/assets/img/Animoji.png" alt="animoji face">
+      <img class="home-page-animoji" src="@/assets/img/Animoji.webp" alt="animoji face">
       <h1 class="home-page-tittle">
         Dusiowe
         <span>Pazurki</span>
