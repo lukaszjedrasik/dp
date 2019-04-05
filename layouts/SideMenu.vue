@@ -24,12 +24,10 @@ export default {
 .slide-menu-off {
   position: fixed;
   top: 0;
-  right: 0;
+  right: -100px;
   width: 0;
-  transition: 0.3s;
+  transition: 2.3s;
   ul {
-    opacity: 0;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,17 +39,17 @@ export default {
       font-size: 2.2em;
       font-weight: 300;
       color: #fff;
+      cursor: pointer;
     }
   }
 }
 .slide-menu-off.sideMenuOn {
+  position: fixed;
   width: 70%;
   height: 100%;
   background-color: #ffcbcf;
 
   ul {
-    opacity: 1;
-
     display: flex;
     flex-direction: column;
     justify-content: center;

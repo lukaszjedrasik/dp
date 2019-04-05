@@ -5,7 +5,7 @@
     "../server/index.ssr.html",
     "0c31fceed453007b7cee.js",
     "3cfc867d33d47b382f22.js",
-    "689a1927f15516585aff.js",
+    "71339e49b9757765446c.js",
     "LICENSES",
     "aae9dc0e4b5cab4c8345.js",
     "img/4d36f9b.webp",
@@ -14,7 +14,7 @@
   "initial": [
     "0c31fceed453007b7cee.js",
     "3cfc867d33d47b382f22.js",
-    "689a1927f15516585aff.js"
+    "71339e49b9757765446c.js"
   ],
   "async": [
     "aae9dc0e4b5cab4c8345.js"
@@ -173,7 +173,7 @@
     "1aa2cb03": [
       4
     ],
-    "0d2c6f5c": [
+    "24f915e4": [
       4
     ],
     "d2935444": [
@@ -485,10 +485,10 @@
     "d4566b7a": [
       4
     ],
-    "3f3270a0": [
+    "0f992390": [
       4
     ],
-    "0e1d6020": [
+    "25ea06a8": [
       4
     ],
     "2ac7080a": [
@@ -585,7 +585,7 @@
   "assetsMapping": {
     "0c31fceed453007b7cee.js": "6fca0322",
     "3cfc867d33d47b382f22.js": "0859c165",
-    "689a1927f15516585aff.js": "1a3ae26b",
+    "71339e49b9757765446c.js": "1a3ae26b",
     "aae9dc0e4b5cab4c8345.js": "2a130dde"
   }
 }
