@@ -1,6 +1,7 @@
 # dusiowe-pazurki
 
-> dusiowe-pazurki
+## Demo:
+https://dusiowe-pazurki.herokuapp.com/
 
 ## Build Setup
 
