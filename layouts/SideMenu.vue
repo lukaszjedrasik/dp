@@ -22,11 +22,11 @@ export default {
 
 <style scoped lang='scss'>
 .slide-menu-off {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: -100px;
   width: 0;
-  transition: 0.5s;
+  transition: 0.3s;
   ul {
     display: flex;
     flex-direction: column;
@@ -44,10 +44,11 @@ export default {
   }
 }
 .slide-menu-off.sideMenuOn {
-  position: fixed;
+  position: absolute;
   right: 0;
   width: 70%;
   height: 100%;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   background-color: #ffcbcf;
 
   ul {

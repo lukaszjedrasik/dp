@@ -17,8 +17,7 @@ export default {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href:
-          "https://fonts.googleapis.com/css?family=Dancing+Script&amp;subset=latin-ext"
+        href: "https://fonts.googleapis.com/css?family=Over+the+Rainbow"
       }
     ]
   },

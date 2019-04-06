@@ -42,7 +42,7 @@ export default {
     height: 3px;
     width: 20px;
     background-color: #fff;
-    transition: 0.5s;
+    transition: 0.3s;
 
     &:nth-child(2) {
       top: 10px;
@@ -61,7 +61,7 @@ export default {
     transform: rotate(45deg);
     &:nth-child(2) {
       left: 0;
-      width: 0;
+      opacity: 0;
     }
     &:nth-child(3) {
       transform: rotate(-45deg);
