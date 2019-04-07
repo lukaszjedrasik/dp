@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import NuxtLoading from './components/nuxt-loading.vue'
 
-import _6f6c098b from '../layouts/default.vue'
-import _3cdbee9a from '../layouts/Hamburger.vue'
-import _68767d6c from '../layouts/SideMenu.vue'
+import '../assets/main.min.css'
 
-const layouts = { "_default": _6f6c098b,"_Hamburger": _3cdbee9a,"_SideMenu": _68767d6c }
+import _6f6c098b from '../layouts/default.vue'
+
+const layouts = { "_default": _6f6c098b }
 
 export default {
   head: {"title":"Dusiowe Pazurki | Nails | Blog","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"dusiowe-pazurki"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Over+the+Rainbow"}],"style":[],"script":[]},

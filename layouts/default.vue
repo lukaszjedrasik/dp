@@ -4,6 +4,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  watch: {
+    $route() {
+      this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
+    }
+  }
+};
+</script>
+
 <style>
 html {
   font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -14,6 +24,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  background-color: #ffcbcf;
+  color: #fff;
 }
 
 *,

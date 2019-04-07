@@ -13,7 +13,7 @@
         .home-page-animoji {
             position: absolute;
             top: 8px;
-            right: 60px;
+            right: 70px;
             width: 50px;
             transform: rotate(32deg)
         }
@@ -26,8 +26,17 @@
             font-size: 6em;
             transform: rotate(15deg);
             font-weight: 100;
-            color: #fff;
             line-height: .8;
         }
     }
+}
+
+.slide-enter-active,
+.slide-leave-active {
+    transition: .3s;
+}
+
+.slide-enter,
+.slide-leave-active {
+    transform: translateX(100vw);
 }

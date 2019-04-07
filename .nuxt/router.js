@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
+const _5969f621 = () => interopDefault(import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */))
+const _4c0ebb64 = () => interopDefault(import('../pages/galeria/index.vue' /* webpackChunkName: "pages/galeria/index" */))
+const _b00dfc52 = () => interopDefault(import('../pages/kontakt/index.vue' /* webpackChunkName: "pages/kontakt/index" */))
 const _24e7fbf4 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -79,6 +82,18 @@ export function createRouter() {
     scrollBehavior,
 
     routes: [{
+      path: "/blog",
+      component: _5969f621,
+      name: "blog"
+    }, {
+      path: "/galeria",
+      component: _4c0ebb64,
+      name: "galeria"
+    }, {
+      path: "/kontakt",
+      component: _b00dfc52,
+      name: "kontakt"
+    }, {
       path: "/",
       component: _24e7fbf4,
       name: "index"

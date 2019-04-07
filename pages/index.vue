@@ -12,13 +12,9 @@
 </template>
 
 <script>
-import Hamburger from "@/layouts/Hamburger";
+import Hamburger from "@/components//Hamburger";
 
 export default {
   components: { Hamburger }
 };
 </script>
-
-<style scoped lang='scss'>
-@import "@/assets/main.min.css";
-</style>

@@ -2,44 +2,46 @@
   <div>
     <div
       class="hamburger"
-      @click="hamburger = !hamburger"
-      :class="{transformHamburger : hamburger}"
+      :class="{transformHamburger : this.$store.state.hamburgerValue.hamburger}"
+      @click="hamburger"
     >
-      <div :class="{transformHamburger : hamburger}"></div>
-      <div :class="{transformHamburger : hamburger}"></div>
-      <div :class="{transformHamburger : hamburger}"></div>
+      <div :class="{transformHamburger : this.$store.state.hamburgerValue.hamburger}"></div>
+      <div :class="{transformHamburger : this.$store.state.hamburgerValue.hamburger}"></div>
+      <div :class="{transformHamburger : this.$store.state.hamburgerValue.hamburger}"></div>
     </div>
-    <SideMenu :sideMenuOn="hamburger"/>
+    <SideMenu/>
+    <nuxt/>
   </div>
 </template>
 
 <script>
-import SideMenu from "@/layouts/SideMenu";
+import SideMenu from "@/components/SideMenu";
 
 export default {
   name: "Hamburger",
   components: { SideMenu },
-  data() {
-    return {
-      hamburger: false
-    };
+  methods: {
+    hamburger() {
+      this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
+    }
   }
 };
 </script>
 
 <style scoped lang='scss'>
 .hamburger {
-  position: absolute;
-  top: 20px;
-  right: 20px;
+  position: fixed;
+  top: 25px;
+  right: 25px;
   width: 35px;
   height: 25px;
   cursor: pointer;
+  z-index: 99;
   div {
     position: absolute;
     top: 0;
     right: 0;
-    height: 3px;
+    height: 2px;
     width: 20px;
     background-color: #fff;
     transition: 0.3s;
@@ -54,13 +56,12 @@ export default {
   }
 }
 .hamburger.transformHamburger {
-  left: 20px;
   div {
     width: 100%;
     top: 10px;
+    right: 0;
     transform: rotate(45deg);
     &:nth-child(2) {
-      left: 0;
       opacity: 0;
     }
     &:nth-child(3) {
