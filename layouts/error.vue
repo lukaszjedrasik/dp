@@ -434,6 +434,7 @@ h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-weight: 300;
 }
 .cls-1 {
   fill: #ffc541;

@@ -15,7 +15,13 @@
             top: 8px;
             right: 70px;
             width: 50px;
-            transform: rotate(32deg)
+            transform: rotate(32deg);
+
+            @media (min-width: 768px) {
+                top: 20px;
+                right: 20px;
+                width: 100px
+            }
         }
 
         .home-page-tittle {
@@ -23,7 +29,7 @@
             bottom: 40px;
             left: 0;
             font-family: "Over the Rainbow";
-            font-size: 6em;
+            font-size: 10rem;
             transform: rotate(15deg);
             font-weight: 100;
             line-height: .8;
@@ -38,5 +44,5 @@
 
 .slide-enter,
 .slide-leave-active {
-    transform: translateX(100vw);
+    opacity: 0;
 }

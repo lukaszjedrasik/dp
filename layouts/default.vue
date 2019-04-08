@@ -5,19 +5,13 @@
 </template>
 
 <script>
-export default {
-  watch: {
-    $route() {
-      this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
-    }
-  }
-};
+export default {};
 </script>
 
 <style>
 html {
   font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 10px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;

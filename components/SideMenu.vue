@@ -1,6 +1,6 @@
 <template>
   <div class="slide-menu-off" :class="{sideMenuOn : this.$store.state.hamburgerValue.hamburger}">
-    <ul>
+    <ul @click="hideMenu">
       <nuxt-link tag="li" to="/">Strona Główna</nuxt-link>
       <nuxt-link tag="li" to="/blog">Blog</nuxt-link>
       <nuxt-link tag="li" to="/galeria">Galeria</nuxt-link>
@@ -11,7 +11,12 @@
 
 <script>
 export default {
-  name: "SideMenu"
+  name: "SideMenu",
+  methods: {
+    hideMenu() {
+      this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
+    }
+  }
 };
 </script>
 
@@ -31,7 +36,7 @@ export default {
     height: 100vh;
     list-style-type: none;
     li {
-      font-size: 1.2em;
+      font-size: 3.5rem;
       font-weight: 300;
       cursor: pointer;
     }
@@ -44,6 +49,7 @@ export default {
   height: 100%;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   background-color: #ffcbcf;
+  z-index: 999;
 
   ul {
     display: flex;
@@ -54,7 +60,7 @@ export default {
     list-style-type: none;
     li {
       margin: 1rem 0;
-      font-size: 2em;
+      font-size: 3.5rem;
       font-weight: 300;
       cursor: pointer;
     }
