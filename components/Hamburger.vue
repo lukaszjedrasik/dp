@@ -3,7 +3,7 @@
     <div
       class="hamburger"
       :class="{transformHamburger : this.$store.state.hamburgerValue.hamburger, 
-              hamburgerBlack : this.isSlide && this.$store.state.hamburgerValue.hamburger === false}"
+              hamburgerRose : this.isSlide && this.$store.state.hamburgerValue.hamburger === false}"
       @click="hamburger"
       @scroll="changeHamburgerColor"
     >
@@ -83,7 +83,7 @@ export default {
   }
 }
 
-.hamburger.hamburgerBlack {
+.hamburger.hamburgerRose {
   div {
     background-color: #ff4081;
   }

@@ -8,33 +8,58 @@
       </h1>
       <Hamburger/>
     </div>
+
     <section class="about">
       <div class="information" data-aos="fade-right" data-aos-once="true">
         <img src="~assets/img/svg.svg" alt="nail nails">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam mollitia sint quod similique officia fuga suscipit beatae accusamus! Ducimus!</p>
       </div>
-      <div class="nailImage" data-aos="zoom-in-up" data-aos-once="true">
-        <img src="~assets/img/1.jpeg" alt="nail nails">
-      </div>
+      <img
+        class="nailImage"
+        src="~assets/img/1.jpeg"
+        alt="nail nails"
+        data-aos="zoom-in-up"
+        data-aos-once="true"
+      >
     </section>
     <section class="about">
       <div class="information informationRight" data-aos="fade-left" data-aos-once="true">
         <img src="~assets/img/svg.svg" alt="nail nails">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam mollitia sint quod similique officia fuga suscipit beatae accusamus! Ducimus!</p>
       </div>
-      <div class="nailImage" data-aos="zoom-in-up" data-aos-once="true">
-        <img src="~assets/img/1.jpeg" alt="nail nails">
-      </div>
+      <img
+        class="nailImage"
+        src="~assets/img/1.jpeg"
+        alt="nail nails"
+        data-aos="zoom-in-up"
+        data-aos-once="true"
+      >
     </section>
     <section class="about">
       <div class="information" data-aos="fade-right" data-aos-once="true">
         <img src="~assets/img/svg.svg" alt="nail nails">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam mollitia sint quod similique officia fuga suscipit beatae accusamus! Ducimus!</p>
       </div>
-      <div class="nailImage" data-aos="zoom-in-up" data-aos-once="true">
-        <img src="~assets/img/1.jpeg" alt="nail nails">
-      </div>
+      <img
+        class="nailImage"
+        src="~assets/img/1.jpeg"
+        alt="nail nails"
+        data-aos="zoom-in-up"
+        data-aos-once="true"
+      >
     </section>
+
+    <footer>
+      <div class="social">
+        <a href="https://github.com/lukaszjedrasik">
+          <img class="github" src="~assets/img/github.svg" alt="github">
+        </a>
+        <a href="https://www.linkedin.com/in/łukasz-jędrasik-42280914b">
+          <img class="linkedin" src="~assets/img/linkedin.svg" alt="linkedin">
+        </a>
+      </div>
+      <p class="signature">&copy; Łukasz Jędrasik 2019</p>
+    </footer>
   </div>
 </template>
 
@@ -46,40 +71,6 @@ export default {
   layout: "DesktopMenu"
 };
 </script>
+
 <style lang="scss" scoped>
-.about {
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  .information {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 auto;
-    img {
-      width: 10rem;
-    }
-    p {
-      margin: 3rem 1rem 3rem 0;
-      font-size: 1.5rem;
-      font-weight: 300;
-      line-height: 1.5;
-      color: #000;
-    }
-  }
-  .information.informationRight {
-    flex-direction: row-reverse;
-    p {
-      margin: 3rem 0 3rem 1rem;
-      text-align: right;
-    }
-  }
-  .nailImage {
-    img {
-      width: 100%;
-      margin: 0 auto;
-    }
-  }
-}
 </style>

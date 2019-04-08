@@ -428,6 +428,11 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+  background-color: pink;
+  width: 100vw;
+  height: 100vh;
+}
 h1 {
   padding: 20px;
   display: flex;
@@ -435,6 +440,7 @@ h1 {
   align-items: center;
   text-align: center;
   font-weight: 300;
+  color: #fff;
 }
 .cls-1 {
   fill: #ffc541;

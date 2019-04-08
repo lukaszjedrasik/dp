@@ -24,9 +24,14 @@ export default {
 .slide-menu-off {
   position: fixed;
   top: 0;
-  right: -100px;
+  right: -50vw;
   width: 0;
-  transition: 0.3s;
+  color: #fff;
+  font-family: "Over the Rainbow";
+  background-color: #ffcbcf;
+  transition: 0.5s;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  z-index: 99;
 
   ul {
     display: flex;
@@ -36,19 +41,20 @@ export default {
     height: 100vh;
     list-style-type: none;
     li {
+      margin: 1rem 0;
       font-size: 3.5rem;
       font-weight: 300;
-      cursor: pointer;
     }
   }
 }
 .slide-menu-off.sideMenuOn {
   position: fixed;
+  top: 0;
   right: 0;
   width: 100%;
-  height: 100%;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   background-color: #ffcbcf;
+  color: #fff;
   z-index: 999;
 
   ul {
@@ -62,7 +68,22 @@ export default {
       margin: 1rem 0;
       font-size: 3.5rem;
       font-weight: 300;
-      cursor: pointer;
+    }
+  }
+}
+@media (orientation: landscape) {
+  .slide-menu-off {
+    ul {
+      li {
+        margin: 0;
+      }
+    }
+  }
+  .slide-menu-off.sideMenuOn {
+    ul {
+      li {
+        margin: 0;
+      }
     }
   }
 }

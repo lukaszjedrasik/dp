@@ -13,26 +13,234 @@
         .home-page-animoji {
             position: absolute;
             top: 8px;
-            right: 70px;
-            width: 50px;
+            right: 7rem;
+            width: 5rem;
             transform: rotate(32deg);
-
-            @media (min-width: 768px) {
-                top: 20px;
-                right: 20px;
-                width: 100px
-            }
         }
 
         .home-page-tittle {
             position: absolute;
-            bottom: 40px;
+            bottom: 2rem;
             left: 0;
             font-family: "Over the Rainbow";
             font-size: 10rem;
-            transform: rotate(15deg);
-            font-weight: 100;
+            transform: rotate(13deg);
+            font-weight: 500;
             line-height: .8;
+            color: #fff;
+        }
+    }
+
+    .about {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+
+        .information {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 3rem 1rem 3rem 0;
+
+            img {
+                width: 10rem;
+            }
+
+            p {
+                font-size: 1.5rem;
+                font-weight: 300;
+                line-height: 1.5;
+                color: #000;
+            }
+        }
+
+        .information.informationRight {
+            flex-direction: row-reverse;
+
+            p {
+                text-align: right;
+            }
+        }
+
+        .nailImage {
+            width: 100vw;
+            margin: 0 auto;
+        }
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3rem;
+
+        .social {
+            margin-bottom: 2rem;
+
+            a {
+                margin: 2rem;
+
+                img {
+                    width: 5rem;
+                }
+            }
+        }
+
+        .signature {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-weight: 300;
+        }
+    }
+
+    @media (min-width: 375px) {
+        .home-page {
+            .home-page-tittle {
+                bottom: 5rem;
+                font-size: 12rem;
+            }
+        }
+
+        .about {
+            .information {
+                margin: 4rem 2.5rem 4rem 0;
+
+                img {
+                    width: 12rem;
+                }
+
+                p {
+                    font-size: 2rem;
+                }
+            }
+
+            .information.informationRight {
+                margin: 4rem 0 4rem 2.5rem;
+            }
+        }
+
+        footer {
+            .social {
+                a {
+                    img {
+                        width: 6rem;
+                    }
+                }
+
+            }
+        }
+    }
+
+    @media (min-width: 414px) {
+        .home-page {
+            .home-page-tittle {
+                bottom: 4rem;
+                font-size: 13rem;
+            }
+        }
+
+        footer {
+            margin-top: 4rem;
+
+            .social {
+                a {
+                    img {
+                        width: 7rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 768px) {
+        .home-page {
+            .home-page-animoji {
+                top: 2rem;
+                right: 2rem;
+                width: 10rem
+            }
+        }
+    }
+
+    @media (orientation: landscape) {
+        .home-page {
+            .home-page-tittle {
+                left: 2rem;
+                bottom: 5rem;
+                transform: rotate(10deg);
+                font-size: 6.5rem;
+
+            }
+        }
+
+        .about {
+            .nailImage {
+                width: 90vw;
+            }
+        }
+    }
+
+    @media (orientation: landscape) and (min-width: 568px) {
+        .home-page {
+            .home-page-tittle {
+                left: 2rem;
+                bottom: 5rem;
+                transform: rotate(8deg);
+                font-size: 7.9rem;
+            }
+        }
+
+        .about {
+            .nailImage {
+                width: 91vw;
+            }
+        }
+    }
+
+    @media (orientation: landscape) and (min-width: 640px) {
+        .home-page {
+            .home-page-tittle {
+                left: 2rem;
+                bottom: 5rem;
+                transform: rotate(8deg);
+                font-size: 8.5rem;
+            }
+        }
+
+        .about {
+            width: 90%;
+        }
+    }
+
+    @media (orientation: landscape) and (min-width: 736px) {
+        .home-page {
+            .home-page-tittle {
+                left: 2rem;
+                bottom: 5rem;
+                transform: rotate(8deg);
+                font-size: 10rem;
+            }
+        }
+
+        .about {
+            .information {
+                img {
+                    width: 15rem;
+                }
+
+                p {
+                    font-size: 3rem;
+                    font-weight: 100;
+                }
+            }
+        }
+
+        .about {
+            .nailImage {
+                width: 85vw;
+            }
         }
     }
 }
