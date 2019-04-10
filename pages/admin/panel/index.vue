@@ -1,10 +1,17 @@
 <template>
-  <div>Panel</div>
+  <div>{{ name() }} - Panel</div>
 </template>
 
 <script>
 export default {
-  middleware: "Auth"
+  middleware: "AuthGuard",
+  methods: {
+    name() {
+      if (this.$store.state.auth.email === "lukaszj93@onet.eu") {
+        return "Hej Łukasz!";
+      }
+    }
+  }
 };
 </script>
 

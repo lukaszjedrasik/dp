@@ -24,17 +24,14 @@ export default {
   methods: {
     async submit() {
       if (this.email !== "") {
-        let response = await this.$axios.$post(
-          "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyBeprvPGfR5_ZNQol5bG814We3KPIivjQg",
-          {
-            email: this.email,
-            password: this.password,
-            returnSecureToken: true
-          }
-        );
-        console.log(response);
+        await this.$store.dispatch("auth/login", {
+          email: this.email,
+          password: this.password,
+          returnSecureToken: true
+        });
         this.email = "";
         this.password = "";
+        this.$router.push("/admin/panel");
       }
     }
   }

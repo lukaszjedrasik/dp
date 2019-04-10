@@ -1,6 +1,6 @@
 const middleware = {}
 
-middleware['Auth'] = require('@/middleware/Auth.js');
-middleware['Auth'] = middleware['Auth'].default || middleware['Auth']
+middleware['AuthGuard'] = require('@/middleware/AuthGuard.js');
+middleware['AuthGuard'] = middleware['AuthGuard'].default || middleware['AuthGuard']
 
 export default middleware
