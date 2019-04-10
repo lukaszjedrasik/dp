@@ -18,9 +18,6 @@ export default {
     };
   },
   methods: {
-    hamburger() {
-      this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
-    },
     changeNavColor() {
       if (window.scrollY >= 500) {
         this.isSlide = true;

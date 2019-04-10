@@ -2,9 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
+const _7dbbe374 = () => interopDefault(import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */))
 const _5969f621 = () => interopDefault(import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */))
 const _4c0ebb64 = () => interopDefault(import('../pages/galeria/index.vue' /* webpackChunkName: "pages/galeria/index" */))
 const _b00dfc52 = () => interopDefault(import('../pages/kontakt/index.vue' /* webpackChunkName: "pages/kontakt/index" */))
+const _54c2d2fb = () => interopDefault(import('../pages/admin/panel/index.vue' /* webpackChunkName: "pages/admin/panel/index" */))
 const _24e7fbf4 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -82,6 +84,10 @@ export function createRouter() {
     scrollBehavior,
 
     routes: [{
+      path: "/admin",
+      component: _7dbbe374,
+      name: "admin"
+    }, {
       path: "/blog",
       component: _5969f621,
       name: "blog"
@@ -93,6 +99,10 @@ export function createRouter() {
       path: "/kontakt",
       component: _b00dfc52,
       name: "kontakt"
+    }, {
+      path: "/admin/panel",
+      component: _54c2d2fb,
+      name: "admin-panel"
     }, {
       path: "/",
       component: _24e7fbf4,

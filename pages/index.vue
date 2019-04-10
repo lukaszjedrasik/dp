@@ -51,10 +51,10 @@
 
     <footer>
       <div class="social">
-        <a href="https://github.com/lukaszjedrasik">
+        <a href="https://github.com/lukaszjedrasik" target="_blank">
           <img class="github" src="~assets/img/github.svg" alt="github">
         </a>
-        <a href="https://www.linkedin.com/in/łukasz-jędrasik-42280914b">
+        <a href="https://www.linkedin.com/in/łukasz-jędrasik-42280914b" target="_blank">
           <img class="linkedin" src="~assets/img/linkedin.svg" alt="linkedin">
         </a>
       </div>
