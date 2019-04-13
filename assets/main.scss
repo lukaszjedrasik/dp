@@ -275,6 +275,63 @@
                 font-size: 14.5rem;
             }
         }
+
+        .aboutContainer {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+
+            .about {
+                width: 30%;
+                margin: 0;
+
+                .information {
+                    flex-direction: column;
+                    text-align: center;
+                    margin: 4rem 2rem;
+
+                    img {
+                        width: 12rem
+                    }
+
+                    p {
+                        font-size: 2rem;
+                        margin-top: 2rem;
+                    }
+                }
+
+                .information.informationRight {
+                    flex-direction: column;
+
+                    p {
+                        text-align: center;
+                    }
+                }
+
+                .nailImage {
+                    width: 90%;
+                    transition: .5s;
+
+                    &:hover {
+                        transform: scale(1.2)
+                    }
+                }
+            }
+        }
+
+        footer {
+            .social {
+                a {
+                    opacity: .5;
+                    transition: .5s;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
     }
 }
 

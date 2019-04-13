@@ -77,7 +77,6 @@ ul {
   }
 }
 .bgMenuColor {
-  justify-content: space-between;
   background-color: #ff4081;
   opacity: 0.9;
   transition: 1s;

@@ -9,45 +9,47 @@
       <Hamburger/>
     </div>
 
-    <section class="about">
-      <div class="information" data-aos="fade-right" data-aos-once="true">
-        <img src="~assets/img/svg.svg" alt="nail nails">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam mollitia sint quod similique officia fuga suscipit beatae accusamus! Ducimus!</p>
-      </div>
-      <img
-        class="nailImage"
-        src="~assets/img/1.jpeg"
-        alt="nail nails"
-        data-aos="zoom-in-up"
-        data-aos-once="true"
-      >
-    </section>
-    <section class="about">
-      <div class="information informationRight" data-aos="fade-left" data-aos-once="true">
-        <img src="~assets/img/svg.svg" alt="nail nails">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam mollitia sint quod similique officia fuga suscipit beatae accusamus! Ducimus!</p>
-      </div>
-      <img
-        class="nailImage"
-        src="~assets/img/1.jpeg"
-        alt="nail nails"
-        data-aos="zoom-in-up"
-        data-aos-once="true"
-      >
-    </section>
-    <section class="about">
-      <div class="information" data-aos="fade-right" data-aos-once="true">
-        <img src="~assets/img/svg.svg" alt="nail nails">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam mollitia sint quod similique officia fuga suscipit beatae accusamus! Ducimus!</p>
-      </div>
-      <img
-        class="nailImage"
-        src="~assets/img/1.jpeg"
-        alt="nail nails"
-        data-aos="zoom-in-up"
-        data-aos-once="true"
-      >
-    </section>
+    <div class="aboutContainer">
+      <section class="about">
+        <div class="information" data-aos="fade-right" data-aos-once="true">
+          <img src="~assets/img/svg.svg" alt="nail nails">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam mollitia sint quod similique officia fuga suscipit beatae accusamus! Ducimus!</p>
+        </div>
+        <img
+          class="nailImage"
+          src="~assets/img/1.jpeg"
+          alt="nail nails"
+          data-aos="zoom-in-up"
+          data-aos-once="true"
+        >
+      </section>
+      <section class="about">
+        <div class="information informationRight" data-aos="fade-left" data-aos-once="true">
+          <img src="~assets/img/svg.svg" alt="nail nails">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam mollitia sint quod similique officia fuga suscipit beatae accusamus! Ducimus!</p>
+        </div>
+        <img
+          class="nailImage"
+          src="~assets/img/1.jpeg"
+          alt="nail nails"
+          data-aos="zoom-in-up"
+          data-aos-once="true"
+        >
+      </section>
+      <section class="about">
+        <div class="information" data-aos="fade-right" data-aos-once="true">
+          <img src="~assets/img/svg.svg" alt="nail nails">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta ullam mollitia sint quod similique officia fuga suscipit beatae accusamus! Ducimus!</p>
+        </div>
+        <img
+          class="nailImage"
+          src="~assets/img/1.jpeg"
+          alt="nail nails"
+          data-aos="zoom-in-up"
+          data-aos-once="true"
+        >
+      </section>
+    </div>
 
     <footer>
       <div class="social">
@@ -68,7 +70,7 @@ import Hamburger from "@/components//Hamburger";
 
 export default {
   components: { Hamburger },
-  layout: "DesktopMenu",
+  layout: "DesktopMenu"
 };
 </script>
 
