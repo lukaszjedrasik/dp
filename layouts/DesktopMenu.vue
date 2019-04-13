@@ -1,10 +1,10 @@
 <template>
   <div>
-    <ul @scroll="changeNavColor">
-      <nuxt-link tag="li" to="/" :class="{menuRose : this.isSlide}">Strona Główna</nuxt-link>
-      <nuxt-link tag="li" to="/blog" :class="{menuRose : this.isSlide}">Blog</nuxt-link>
-      <nuxt-link tag="li" to="/galeria" :class="{menuRose : this.isSlide}">Galeria</nuxt-link>
-      <nuxt-link tag="li" to="/kontakt" :class="{menuRose : this.isSlide}">Kontakt</nuxt-link>
+    <ul @scroll="changeNavColor" :class="{bgMenuColor : this.bgMenu}">
+      <nuxt-link tag="li" to="/">Strona Główna</nuxt-link>
+      <nuxt-link tag="li" to="/blog">Blog</nuxt-link>
+      <nuxt-link tag="li" to="/galeria">Galeria</nuxt-link>
+      <nuxt-link tag="li" to="/kontakt">Kontakt</nuxt-link>
     </ul>
     <nuxt/>
   </div>
@@ -14,15 +14,15 @@
 export default {
   data() {
     return {
-      isSlide: false
+      bgMenu: false
     };
   },
   methods: {
     changeNavColor() {
-      if (window.scrollY >= 500) {
-        this.isSlide = true;
+      if (window.scrollY >= 400) {
+        this.bgMenu = true;
       } else {
-        this.isSlide = false;
+        this.bgMenu = false;
       }
     }
   },
@@ -43,26 +43,43 @@ export default {
 ul {
   position: fixed;
   top: 0;
+  width: 100%;
   display: flex;
+  justify-content: flex-start;
   list-style-type: none;
   z-index: 9999;
 
-  @media (max-width: 767px) {
-    display: none;
-  }
   li {
-    margin: 2rem 4rem;
+    margin: 1rem 5rem;
     font-family: "Over the Rainbow";
-    font-size: 3rem;
+    font-size: 3.6rem;
     color: #fff;
     cursor: pointer;
     transition: 0.5s;
-    &:hover {
-      transform: scale(1.2);
+  }
+  @media (max-width: 767px) {
+    display: none;
+  }
+  @media (min-width: 768px) {
+    li {
+      margin: 2rem;
+    }
+  }
+  @media (orientation: landscape) and (min-width: 1024px) {
+    justify-content: center;
+    li {
+      margin: 1rem 4rem;
+      font-size: 3.5rem;
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
 }
-.menuRose {
-  color: #ff4081;
+.bgMenuColor {
+  justify-content: space-between;
+  background-color: #ff4081;
+  opacity: 0.9;
+  transition: 1s;
 }
 </style>

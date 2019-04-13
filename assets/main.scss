@@ -161,6 +161,28 @@
                 right: 2rem;
                 width: 10rem
             }
+
+            .home-page-tittle {
+                font-size: 20rem;
+            }
+        }
+
+        .about {
+            .information {
+                margin: 5rem 2.5rem 5rem 2rem;
+
+                img {
+                    width: 15rem;
+                }
+
+                p {
+                    font-size: 2.5rem;
+                }
+            }
+
+            .information.informationRight {
+                margin: 5rem 2rem 5rem 2.5rem;
+            }
         }
     }
 
@@ -240,6 +262,17 @@
         .about {
             .nailImage {
                 width: 85vw;
+            }
+        }
+    }
+
+    @media (orientation: landscape) and (min-width: 1024px) {
+        .home-page {
+            .home-page-tittle {
+                left: -1rem;
+                bottom: 10rem;
+                transform: rotate(10deg);
+                font-size: 14.5rem;
             }
         }
     }

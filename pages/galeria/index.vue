@@ -15,5 +15,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang='scss'>
+.container {
+  min-height: 100vh;
+  background-color: #ffcbcf;
+}
 </style>

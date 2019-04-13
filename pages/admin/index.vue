@@ -3,7 +3,7 @@
     <Hamburger/>
     <form>
       <input type="email" placeholder="E-mail" required v-model="email">
-      <input type="text" placeholder="Hasło" required v-model="password">
+      <input type="password" placeholder="Hasło" required v-model="password">
       <button @click.prevent="submit">ZALOGUJ</button>
     </form>
   </div>
@@ -31,7 +31,6 @@ export default {
         });
         this.email = "";
         this.password = "";
-        this.$router.push("/admin/panel");
       }
     }
   }
