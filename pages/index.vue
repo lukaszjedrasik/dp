@@ -70,7 +70,8 @@ import Hamburger from "@/components//Hamburger";
 
 export default {
   components: { Hamburger },
-  layout: "DesktopMenu"
+  layout: "DesktopMenu",
+  transition: "slide"
 };
 </script>
 

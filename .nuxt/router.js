@@ -7,8 +7,8 @@ const _5969f621 = () => interopDefault(import('../pages/blog/index.vue' /* webpa
 const _4c0ebb64 = () => interopDefault(import('../pages/galeria/index.vue' /* webpackChunkName: "pages/galeria/index" */))
 const _b00dfc52 = () => interopDefault(import('../pages/kontakt/index.vue' /* webpackChunkName: "pages/kontakt/index" */))
 const _54c2d2fb = () => interopDefault(import('../pages/admin/panel/index.vue' /* webpackChunkName: "pages/admin/panel/index" */))
-const _27fab776 = () => interopDefault(import('../pages/admin/panel/editBlog/index.vue' /* webpackChunkName: "pages/admin/panel/editBlog/index" */))
-const _6463a614 = () => interopDefault(import('../pages/admin/panel/editGallery/index.vue' /* webpackChunkName: "pages/admin/panel/editGallery/index" */))
+const _d3ef1368 = () => interopDefault(import('../pages/admin/panel/blog/index.vue' /* webpackChunkName: "pages/admin/panel/blog/index" */))
+const _2addae43 = () => interopDefault(import('../pages/admin/panel/galeria/index.vue' /* webpackChunkName: "pages/admin/panel/galeria/index" */))
 const _24e7fbf4 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -106,13 +106,13 @@ export function createRouter() {
       component: _54c2d2fb,
       name: "admin-panel"
     }, {
-      path: "/admin/panel/editBlog",
-      component: _27fab776,
-      name: "admin-panel-editBlog"
+      path: "/admin/panel/blog",
+      component: _d3ef1368,
+      name: "admin-panel-blog"
     }, {
-      path: "/admin/panel/editGallery",
-      component: _6463a614,
-      name: "admin-panel-editGallery"
+      path: "/admin/panel/galeria",
+      component: _2addae43,
+      name: "admin-panel-galeria"
     }, {
       path: "/",
       component: _24e7fbf4,

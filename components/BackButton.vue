@@ -13,10 +13,10 @@ export default {};
 <style lang="scss" scoped>
 button {
   position: fixed;
-  top: 3.3rem;
-  left: 5rem;
+  bottom: 1rem;
+  left: 2rem;
   border: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   i {
     padding: 1rem;
     color: #ff4081;

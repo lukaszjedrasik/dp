@@ -18,6 +18,7 @@ void (function updateModules() {
   store.modules = store.modules || {}
 
   resolveStoreModules(require('@/store/auth.js'), 'auth.js')
+  resolveStoreModules(require('@/store/gallery.js'), 'gallery.js')
   resolveStoreModules(require('@/store/hamburgerValue.js'), 'hamburgerValue.js')
 
   // If the environment supports hot reloading...
@@ -26,6 +27,7 @@ void (function updateModules() {
     // Whenever any Vuex module is updated...
     module.hot.accept([
       '@/store/auth.js',
+      '@/store/gallery.js',
       '@/store/hamburgerValue.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
