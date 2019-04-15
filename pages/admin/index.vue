@@ -71,6 +71,7 @@ export default {
       border: none;
       border-radius: 5px;
       color: #ffcbcf;
+      background-color: #fff;
       font-size: 2rem;
       font-weight: 400;
       outline: none;

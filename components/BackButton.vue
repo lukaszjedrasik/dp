@@ -17,10 +17,10 @@ button {
   left: 2rem;
   border: none;
   font-size: 1.5rem;
+  background-color: transparent;
   i {
     padding: 1rem;
     color: #ff4081;
-    background-color: #ffcbcf;
     span {
       margin-left: 1rem;
     }
