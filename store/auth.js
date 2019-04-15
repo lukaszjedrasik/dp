@@ -6,7 +6,7 @@ export const state = () => ({
 
 export const mutations = {
   SET_AUTH(state, payload) {
-    state.isLoggin = true;
+    state.isLoggin = !payload.isLoggin;
     state.email = payload.email;
     state.token = payload.token;
   },
