@@ -23,7 +23,11 @@
     "nuxt-sass-resources-loader": "^2.0.5",
     "qonfucius-nuxt-fontawesome": "^1.0.1",
     "sass-loader": "^7.1.0",
-    "vue-gallery": "^2.0.0"
+    "v-lazy": "^0.9.5",
+    "vue-gallery": "^2.0.0",
+    "vue-image-lightbox": "^6.2.0",
+    "vue-lazyload": "^1.2.6",
+    "vue2-touch": "^1.0.8"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
