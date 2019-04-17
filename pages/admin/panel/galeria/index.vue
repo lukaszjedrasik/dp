@@ -83,6 +83,9 @@ export default {
   },
   created() {
     this.$store.dispatch("gallery/downloadImages");
+  },
+  beforeUpdate() {
+    this.$store.dispatch("gallery/downloadImages");
   }
 };
 </script>
