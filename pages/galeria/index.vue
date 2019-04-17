@@ -1,8 +1,9 @@
 <template>
   <div class="container">
     <Hamburger></Hamburger>
+    <Loader v-show="this.$store.state.gallery.loader"/>
 
-    <div class="gallery">
+    <div class="gallery" v-if="canILoad">
       <ul>
         <li v-for="(nail, index) in nails" style="display: inline-block" :key="index">
           <img v-lazy="nail.src" style="height: 150px" @click="openGallery(index)">
@@ -15,70 +16,37 @@
 
 <script>
 import Hamburger from "@/components//Hamburger";
-import LightBox from "vue-image-lightbox";
+import Loader from "@/components/Loader";
 
 export default {
-  components: { Hamburger, LightBox },
+  components: {
+    Hamburger,
+    LightBox: () => import("vue-image-lightbox"),
+    Loader
+  },
   transition: "slide",
   layout: "DesktopMenu",
   data() {
     return {
-      nails: [
-        {
-          thumb:
-            "https://www.virginexperiencedays.co.uk/content/img/product/large/the-view-from-the-12102928.jpg",
-          src:
-            "https://www.virginexperiencedays.co.uk/content/img/product/large/the-view-from-the-12102928.jpg"
-        },
-        {
-          thumb:
-            "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1520546583/four-seasons-resort-oahu-hawaii-POOLVIEW0318.jpg?itok=9KF4MOHV",
-          src:
-            "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1520546583/four-seasons-resort-oahu-hawaii-POOLVIEW0318.jpg?itok=9KF4MOHV"
-        },
-        {
-          thumb:
-            "https://www.virginexperiencedays.co.uk/content/img/product/large/the-view-from-the-12102928.jpg",
-          src:
-            "https://www.virginexperiencedays.co.uk/content/img/product/large/the-view-from-the-12102928.jpg"
-        },
-        {
-          thumb:
-            "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1520546583/four-seasons-resort-oahu-hawaii-POOLVIEW0318.jpg?itok=9KF4MOHV",
-          src:
-            "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1520546583/four-seasons-resort-oahu-hawaii-POOLVIEW0318.jpg?itok=9KF4MOHV"
-        },
-        {
-          thumb:
-            "https://www.virginexperiencedays.co.uk/content/img/product/large/the-view-from-the-12102928.jpg",
-          src:
-            "https://www.virginexperiencedays.co.uk/content/img/product/large/the-view-from-the-12102928.jpg"
-        },
-        {
-          thumb:
-            "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1520546583/four-seasons-resort-oahu-hawaii-POOLVIEW0318.jpg?itok=9KF4MOHV",
-          src:
-            "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1520546583/four-seasons-resort-oahu-hawaii-POOLVIEW0318.jpg?itok=9KF4MOHV"
-        },
-        {
-          thumb:
-            "https://www.virginexperiencedays.co.uk/content/img/product/large/the-view-from-the-12102928.jpg",
-          src:
-            "https://www.virginexperiencedays.co.uk/content/img/product/large/the-view-from-the-12102928.jpg"
-        },
-        {
-          thumb:
-            "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1520546583/four-seasons-resort-oahu-hawaii-POOLVIEW0318.jpg?itok=9KF4MOHV",
-          src:
-            "https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1520546583/four-seasons-resort-oahu-hawaii-POOLVIEW0318.jpg?itok=9KF4MOHV"
-        }
-      ]
+      canILoad: false
     };
+  },
+  mounted() {
+    if (process.client) {
+      this.canILoad = true;
+    }
   },
   methods: {
     openGallery(index) {
-      console.log(index);
       this.$refs.lightbox.showImage(index);
+    }
+  },
+  created() {
+    this.$store.dispatch("gallery/downloadImages");
+  },
+  computed: {
+    nails() {
+      return this.$store.state.gallery.photos;
     }
   }
 };

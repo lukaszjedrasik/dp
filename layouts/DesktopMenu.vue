@@ -47,7 +47,7 @@ ul {
   display: flex;
   justify-content: flex-start;
   list-style-type: none;
-  z-index: 9999;
+  z-index: 999;
 
   li {
     margin: 1rem 5rem;
