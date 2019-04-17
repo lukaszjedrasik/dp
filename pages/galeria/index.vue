@@ -5,11 +5,17 @@
 
     <div class="gallery" v-if="canILoad">
       <ul>
-        <li v-for="(nail, index) in nails" style="display: inline-block" :key="index">
-          <img v-lazy="nail.src" style="height: 150px" @click="openGallery(index)">
+        <li v-for="(nail, index) in nails" :key="index">
+          <img v-lazy="nail.src" @click="openGallery(index)">
         </li>
       </ul>
-      <LightBox :images="nails" ref="lightbox" :show-light-box="false" :showCaption="false"></LightBox>
+      <LightBox
+        :images="nails"
+        ref="lightbox"
+        :show-light-box="false"
+        :showCaption="false"
+        v-if="this.$store.state.gallery.photos"
+      ></LightBox>
     </div>
   </div>
 </template>
@@ -46,7 +52,11 @@ export default {
   },
   computed: {
     nails() {
-      return this.$store.state.gallery.photos;
+      if (this.$store.state.gallery.photos) {
+        const obj = this.$store.state.gallery.photos;
+        const result = Object.values(obj);
+        return result;
+      }
     }
   }
 };
@@ -60,13 +70,20 @@ export default {
   align-items: center;
   background-color: #ffcbcf;
   .gallery {
+    margin: 8rem auto 2rem auto;
     ul {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      list-style-type: none;
       li {
-        margin: 1rem;
+        display: flex;
+        justify-content: center;
+        margin: 0.5rem;
+        img {
+          height: 100px;
+        }
       }
     }
   }

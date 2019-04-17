@@ -19,12 +19,17 @@ export const actions = {
       let res = await this.$axios.$get(
         "https://dusiowe-pazurki.firebaseio.com/images.json"
       );
-      const obj = res;
-      const result = Object.keys(obj).map(key => {
-        return obj[key];
-      });
-      commit("SET_IMAGES", result);
+      commit("SET_IMAGES", res);
       commit("SET_LOADER", false);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  delete({ state }, index) {
+    try {
+      this.$axios.$delete(
+        `https://dusiowe-pazurki.firebaseio.com/images/${index}.json`
+      );
     } catch (error) {
       console.log(error);
     }

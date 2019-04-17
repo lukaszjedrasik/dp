@@ -16,7 +16,13 @@
       </form>
     </div>
 
-    <div class="remove" v-if="remove">usun</div>
+    <div class="remove" v-if="remove">
+      <ul>
+        <li v-for="(nail, index) in nails" :key="index" @click="deleteImg(index)">
+          <img v-lazy="nail.src">
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -65,7 +71,18 @@ export default {
         }
         this.img = "";
       }
+    },
+    async deleteImg(index) {
+      await this.$store.dispatch("gallery/delete", index);
     }
+  },
+  computed: {
+    nails() {
+      return this.$store.state.gallery.photos;
+    }
+  },
+  created() {
+    this.$store.dispatch("gallery/downloadImages");
   }
 };
 </script>
@@ -82,13 +99,30 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5rem;
+    margin-top: 2rem;
     button {
       margin-bottom: 2rem;
       border: none;
       font-size: 2rem;
       color: #ff4081;
       background-color: transparent;
+    }
+  }
+  .remove {
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      list-style-type: none;
+      li {
+        display: flex;
+        justify-content: center;
+        margin: 0.5rem;
+        img {
+          height: 80px;
+        }
+      }
     }
   }
 }
