@@ -2,6 +2,7 @@
   <div class="container">
     <h1 class="name" v-if="this.$store.state.auth.email">Witaj {{ name() }}</h1>
 
+    <HomeButton @home="home"/>
     <LogoutButton @logout="logout"/>
 
     <section class="select">
@@ -23,10 +24,11 @@
 
 <script>
 import LogoutButton from "@/components/LogoutButton";
+import HomeButton from "@/components/HomeButton";
 
 export default {
   middleware: ["autologin", "notAuthenticated"],
-  components: { LogoutButton },
+  components: { LogoutButton, HomeButton },
   methods: {
     name() {
       if (this.$store.state.auth.email === "lukaszj93@onet.eu") {
@@ -39,6 +41,9 @@ export default {
     },
     logout() {
       this.$store.dispatch("auth/logout");
+    },
+    home() {
+      this.$router.push("/");
     }
   }
 };

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <BackButton @back="back"/>
+    <HomeButton @home="home"/>
     <LogoutButton @logout="logout"/>
 
     <div class="buttonContainer">
@@ -29,10 +30,11 @@
 <script>
 import LogoutButton from "@/components/LogoutButton";
 import BackButton from "@/components/BackButton";
+import HomeButton from "@/components/HomeButton";
 
 export default {
   middleware: ["autologin", "notAuthenticated"],
-  components: { LogoutButton, BackButton },
+  components: { LogoutButton, BackButton, HomeButton },
   data() {
     return {
       add: null,
@@ -74,6 +76,9 @@ export default {
     },
     async deleteImg(index) {
       await this.$store.dispatch("gallery/delete", index);
+    },
+    home() {
+      this.$router.push("/");
     }
   },
   computed: {

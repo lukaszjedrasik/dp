@@ -5,6 +5,7 @@
       <nuxt-link tag="li" to="/blog">Blog</nuxt-link>
       <nuxt-link tag="li" to="/galeria">Galeria</nuxt-link>
       <nuxt-link tag="li" to="/kontakt">Kontakt</nuxt-link>
+      <nuxt-link tag="li" to="/admin" v-if="this.$store.state.auth.isLoggin">Admin</nuxt-link>
     </ul>
   </div>
 </template>

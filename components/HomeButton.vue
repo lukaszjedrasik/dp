@@ -1,14 +1,14 @@
 <template>
-  <button @click="$emit('back')">
-    <i class="fas fa-chevron-left">
-      <span>Wstecz</span>
+  <button @click="$emit('home')">
+    <i class="fas fa-home">
+      <span>Strona Główna</span>
     </i>
   </button>
 </template>
 
 <script>
 export default {
-  name: "BackButton"
+  name: "HomeButton"
 };
 </script>
 
@@ -16,7 +16,8 @@ export default {
 button {
   position: fixed;
   bottom: 1rem;
-  left: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   border: none;
   font-size: 1.5rem;
   background-color: transparent;

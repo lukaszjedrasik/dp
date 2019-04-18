@@ -13,6 +13,11 @@ export const mutations = {
     state.email = payload.email;
     state.token = payload.token;
   },
+  SET_TOKEN(state, payload) {
+    state.email = payload.email;
+    state.token = payload.token;
+    state.isLoggin = payload.isLoggin;
+  },
   CLEAR_LOGIN_DATA(state) {
     state.isLoggin = false;
     state.email = null;
@@ -48,35 +53,35 @@ export const actions = {
   autologin({ commit }, req) {
     let token;
     let email;
+    let isLoggin;
 
     if (req) {
       if (!req.headers.cookie) {
-        return;
+        return (isLoggin = false);
       }
-      const jwtCookie = req.headers.cookie
-        .split(";")
-        .find(c => c.trim().startsWith("jwt="));
-      if (!jwtCookie) {
-        return;
-      }
-      token = jwtCookie.split("=")[1];
 
-      email = req.headers.cookie
-        .split(";")
-        .find(c => c.trim().startsWith("emailCookie="))
-        .split("=")[1];
-      commit("SET_AUTH", {
+      token = cookieparser.parse(req.headers.cookie).jwt;
+      email = cookieparser.parse(req.headers.cookie).emailCookie;
+      isLoggin = true;
+
+      commit("SET_TOKEN", {
         email,
         token,
-        isLoggin: true
+        isLoggin
       });
     } else {
       email = localStorage.getItem("emailLocalStorage");
       token = localStorage.getItem("tokenLocalStorage");
-      commit("SET_AUTH", {
+      if (!token) {
+        isLoggin = false;
+      } else {
+        isLoggin = true;
+      }
+
+      commit("SET_TOKEN", {
         email,
         token,
-        isLoggin: true
+        isLoggin
       });
     }
   },
