@@ -25,7 +25,7 @@
 import LogoutButton from "@/components/LogoutButton";
 
 export default {
-  middleware: "AuthGuard",
+  middleware: ["autologin", "notAuthenticated"],
   components: { LogoutButton },
   methods: {
     name() {

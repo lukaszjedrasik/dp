@@ -15,6 +15,7 @@ import Hamburger from "@/components//Hamburger";
 export default {
   components: { Hamburger },
   layout: "DesktopMenu",
+  middleware: ["autologin", "authenticated"],
   data() {
     return {
       email: "",

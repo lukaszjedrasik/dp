@@ -4,8 +4,8 @@ export const state = () => ({
 });
 
 export const mutations = {
-  SET_IMAGES(state, res) {
-    state.photos = res;
+  SET_IMAGES(state, payload) {
+    state.photos = payload;
   },
   SET_LOADER(state, payload) {
     state.loader = payload;

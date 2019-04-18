@@ -31,7 +31,7 @@ import LogoutButton from "@/components/LogoutButton";
 import BackButton from "@/components/BackButton";
 
 export default {
-  middleware: "AuthGuard",
+  middleware: ["autologin", "notAuthenticated"],
   components: { LogoutButton, BackButton },
   data() {
     return {
