@@ -1,3 +1,3 @@
-export default function(context) {
-  context.store.dispatch("auth/autologin", context.req);
+export default function({ store, req }) {
+  store.dispatch("auth/autologin", req);
 }

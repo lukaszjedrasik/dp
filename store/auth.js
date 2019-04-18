@@ -1,4 +1,5 @@
 import Cookie from "js-cookie";
+import cookieparser from "cookieparser";
 
 export const state = () => ({
   isLoggin: null,
@@ -44,7 +45,7 @@ export const actions = {
     }
   },
 
-  autologin(vuexContext, req) {
+  autologin({ commit }, req) {
     let token;
     let email;
 
@@ -64,7 +65,7 @@ export const actions = {
         .split(";")
         .find(c => c.trim().startsWith("emailCookie="))
         .split("=")[1];
-      vuexContext.commit("SET_AUTH", {
+      commit("SET_AUTH", {
         email,
         token,
         isLoggin: true
@@ -72,7 +73,7 @@ export const actions = {
     } else {
       email = localStorage.getItem("emailLocalStorage");
       token = localStorage.getItem("tokenLocalStorage");
-      vuexContext.commit("SET_AUTH", {
+      commit("SET_AUTH", {
         email,
         token,
         isLoggin: true

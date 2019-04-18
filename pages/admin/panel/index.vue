@@ -33,6 +33,8 @@ export default {
         return "Łukasz!";
       } else if (this.$store.state.auth.email === "dusia@interia.pl") {
         return "Dusia!";
+      } else {
+        return "Test";
       }
     },
     logout() {
