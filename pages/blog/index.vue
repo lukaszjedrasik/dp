@@ -83,6 +83,8 @@ export default {
     text-align: left;
   }
   .posts {
+    display: flex;
+    flex-direction: column;
     margin: 2rem 0;
     .post {
       margin: 0 auto;
@@ -112,6 +114,26 @@ export default {
         margin: 3rem auto;
         width: 90%;
         border-bottom: 1px solid #ff4081;
+      }
+    }
+  }
+
+  @media (orientation: landscape) {
+    .posts {
+      flex-direction: row;
+      flex-wrap: wrap;
+      .post {
+        flex-basis: 45%;
+        .title {
+          margin: 1rem;
+          font-size: 1.5rem;
+        }
+        .description {
+          font-size: 1rem;
+        }
+        .date {
+          font-size: 0.8rem;
+        }
       }
     }
   }
