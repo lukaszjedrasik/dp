@@ -15,8 +15,10 @@ export default {
 
 <style scoped>
 .lds-ellipsis {
-  display: flex;
   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 64px;
   height: 64px;
   z-index: 9999;

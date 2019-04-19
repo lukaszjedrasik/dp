@@ -1,9 +1,10 @@
 <template>
   <div class="container">
     <Hamburger></Hamburger>
-    <Loader v-show="this.$store.state.gallery.loader"/>
+    <h1>Nails | Galeria</h1>
 
     <div class="gallery" v-if="canILoad">
+      <Loader v-show="this.$store.state.gallery.loader"/>
       <ul>
         <li v-for="(nail, index) in nails" :key="index">
           <img v-lazy="nail.src" @click="openGallery(index)">
@@ -65,12 +66,19 @@ export default {
 <style scoped lang='scss'>
 .container {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
   background-color: #ffcbcf;
+  color: #fff;
+  h1 {
+    margin: 1rem 0 0 3rem;
+    font-family: "Over the Rainbow";
+    font-size: 3rem;
+    font-weight: 300;
+    text-align: left;
+  }
   .gallery {
-    margin: 8rem auto 2rem auto;
+    margin: 2rem auto 2rem auto;
+    width: 95%;
     ul {
       display: flex;
       justify-content: center;

@@ -31,7 +31,7 @@ export default {
       this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
     },
     changeHamburgerColor() {
-      if (window.scrollY >= 240) {
+      if (window.scrollY >= 150) {
         this.isSlide = true;
       } else {
         this.isSlide = false;

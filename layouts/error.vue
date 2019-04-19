@@ -415,17 +415,17 @@ export default {
       counter: 5
     };
   },
-  watch: {
-    $route() {
-      this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
-    }
-  },
+  // watch: {
+  //   $route() {
+  //     this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
+  //   }
+  // },
   mounted() {
     setInterval(() => {
       this.counter--;
       if (this.counter === 0) {
         this.$router.replace("/");
-        this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
+        // this.$store.commit("hamburgerValue/HAMBURGER_ON_OFF");
       }
     }, 1000);
   }

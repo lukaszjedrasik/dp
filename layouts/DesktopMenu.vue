@@ -1,11 +1,17 @@
 <template>
   <div>
     <ul @scroll="changeNavColor" :class="{bgMenuColor : this.bgMenu}">
-      <nuxt-link tag="li" to="/">Strona Główna</nuxt-link>
-      <nuxt-link tag="li" to="/blog">Blog</nuxt-link>
-      <nuxt-link tag="li" to="/galeria">Galeria</nuxt-link>
-      <nuxt-link tag="li" to="/kontakt">Kontakt</nuxt-link>
-      <nuxt-link tag="li" to="/admin" v-if="this.$store.state.auth.isLoggin">Admin</nuxt-link>
+      <nuxt-link tag="li" to="/" active-class="active" exact>Strona Główna</nuxt-link>
+      <nuxt-link tag="li" to="/blog" active-class="active" exact>Blog</nuxt-link>
+      <nuxt-link tag="li" to="/galeria" active-class="active" exact>Galeria</nuxt-link>
+      <nuxt-link tag="li" to="/kontakt" active-class="active" exact>Kontakt</nuxt-link>
+      <nuxt-link
+        tag="li"
+        to="/admin"
+        active-class="active"
+        exact
+        v-if="this.$store.state.auth.isLoggin"
+      >Admin</nuxt-link>
     </ul>
     <nuxt/>
   </div>
@@ -20,7 +26,7 @@ export default {
   },
   methods: {
     changeNavColor() {
-      if (window.scrollY >= 400) {
+      if (window.scrollY >= 300) {
         this.bgMenu = true;
       } else {
         this.bgMenu = false;
@@ -69,11 +75,21 @@ ul {
   @media (orientation: landscape) and (min-width: 1024px) {
     justify-content: center;
     li {
+      position: relative;
       margin: 1rem 4rem;
       font-size: 3.5rem;
       &:hover {
         transform: scale(1.2);
       }
+    }
+    .active::before {
+      content: "";
+      position: absolute;
+      bottom: 0.7rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      border-bottom: 1px solid #fff;
     }
   }
 }

@@ -72,7 +72,10 @@ export default {
   components: { Hamburger },
   layout: "DesktopMenu",
   transition: "slide",
-  middleware: "autologin"
+  middleware: "autologin",
+  head: {
+    title: "Strona Główna. Nails. Dusiowe Pazurki"
+  }
 };
 </script>
 
