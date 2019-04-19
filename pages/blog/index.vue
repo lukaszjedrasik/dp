@@ -1,42 +1,37 @@
 <template>
   <div class="container">
-    <Hamburger></Hamburger>
+    <Hamburger/>
     <h1>Nails | Blog</h1>
 
     <section class="posts">
-      <article class="post">
-        <img src="~assets/img/blog_photo.png" alt="blog photo nails">
-        <h2 class="title">Lorem, ipsum dolor sit amet consectetur adipisicing.</h2>
-        <h3
-          class="description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit asperiores temporibus obcaecati quam animi est expedita, accusantium sed nesciunt harum.</h3>
-        <div class="date">{{ date() }}</div>
-        <div class="break-line"></div>
-      </article>
-      <article class="post">
-        <img src="~assets/img/blog_photo.png" alt="blog photo nails">
-        <h2 class="title">Lorem, ipsum dolor sit amet consectetur adipisicing.</h2>
-        <h3
-          class="description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit asperiores temporibus obcaecati quam animi est expedita, accusantium sed nesciunt harum.</h3>
-        <div class="date">{{ date() }}</div>
-        <div class="break-line"></div>
-      </article>
-      <article class="post">
-        <img src="~assets/img/blog_photo.png" alt="blog photo nails">
-        <h2 class="title">Lorem, ipsum dolor sit amet consectetur adipisicing.</h2>
-        <h3
-          class="description"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit asperiores temporibus obcaecati quam animi est expedita, accusantium sed nesciunt harum.</h3>
-        <div class="date">{{ date() }}</div>
-        <div class="break-line"></div>
-      </article>
+      <nuxt-link :to="/blog/ + 1" tag="div" class="post">
+        <article>
+          <img src="~assets/img/blog_photo.png" alt="blog photo nails">
+          <h2 class="title">Lorem, ipsum dolor sit amet consectetur adipisicing.</h2>
+          <h3
+            class="description"
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit asperiores temporibus obcaecati quam animi est expedita, accusantium sed nesciunt harum.</h3>
+          <div class="date">{{ `${date()} |` }}</div>
+          <div class="break-line"></div>
+        </article>
+      </nuxt-link>
+      <nuxt-link :to="/blog/ + 2" tag="div" class="post">
+        <article>
+          <img src="~assets/img/blog_photo.png" alt="blog photo nails">
+          <h2 class="title">Lorem, ipsum dolor sit amet consectetur adipisicing.</h2>
+          <h3
+            class="description"
+          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit asperiores temporibus obcaecati quam animi est expedita, accusantium sed nesciunt harum.</h3>
+          <div class="date">{{ `${date()} |` }}</div>
+          <div class="break-line"></div>
+        </article>
+      </nuxt-link>
     </section>
   </div>
 </template>
 
 <script>
-import Hamburger from "@/components//Hamburger";
+import Hamburger from "@/components/Hamburger";
 
 export default {
   transition: "slide",
@@ -96,7 +91,7 @@ export default {
       .title {
         margin: 2rem 2rem 1rem 1rem;
         font-size: 2rem;
-        font-weight: 400;
+        font-weight: 300;
       }
       .description {
         margin: 0 2rem 0 1rem;

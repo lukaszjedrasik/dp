@@ -11,8 +11,8 @@
 
     <div class="add" v-if="add">
       <form>
-        <label for="image">Link do zdjęcia:</label>
-        <input type="text" name id="image" v-model.trim="img">
+        <input type="text" name id="image" placeholder="Link do zdjęcia" v-model.trim="img">
+        <p class="error" v-if="error">Pole nie może być puste.</p>
         <button type="submit" @click.prevent="addImg">Dodaj</button>
       </form>
     </div>
@@ -39,7 +39,8 @@ export default {
     return {
       add: null,
       remove: null,
-      img: ""
+      img: "",
+      error: false
     };
   },
   methods: {
@@ -60,6 +61,7 @@ export default {
     },
     async addImg() {
       if (this.img !== "") {
+        this.error = false;
         try {
           let response = await this.$axios.$post(
             "https://dusiowe-pazurki.firebaseio.com/images.json",
@@ -72,6 +74,8 @@ export default {
           console.log(error);
         }
         this.img = "";
+      } else {
+        this.error = true;
       }
     },
     async deleteImg(index) {
@@ -107,13 +111,44 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
+    margin: 7rem 0 2rem 0;
     button {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       border: none;
       font-size: 2rem;
       color: #ff4081;
       background-color: transparent;
+      outline: none;
+    }
+  }
+  .add {
+    width: 100%;
+    form {
+      display: flex;
+      flex-direction: column;
+      input {
+        width: 80%;
+        margin: 0.5rem auto;
+        padding: 1rem 2rem;
+        text-align: center;
+        outline: none;
+        border: none;
+        border-radius: 0.5rem;
+      }
+      .error {
+        margin: 1rem auto;
+        font-size: 1.5rem;
+        color: red;
+      }
+      button {
+        width: 50%;
+        margin: 2rem auto;
+        padding: 1rem 0;
+        border: 1px solid #ff4081;
+        border-radius: 0.5rem;
+        background-color: transparent;
+        outline: none;
+      }
     }
   }
   .remove {
@@ -128,7 +163,7 @@ export default {
         justify-content: center;
         margin: 0.5rem;
         img {
-          height: 80px;
+          height: 100px;
         }
       }
     }

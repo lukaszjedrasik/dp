@@ -55,11 +55,11 @@ export default {
   height: 100vh;
   background-color: #ffcbcf;
   .name {
-    margin-top: 2rem;
+    margin-top: 5rem;
     text-align: center;
     color: #ff4081;
     font-size: 3rem;
-    font-weight: 700;
+    font-weight: 300;
   }
 
   .select {

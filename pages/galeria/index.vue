@@ -88,9 +88,9 @@ export default {
       li {
         display: flex;
         justify-content: center;
-        margin: 0.5rem;
+        margin: 1rem;
         img {
-          height: 100px;
+          height: 70px;
         }
       }
     }

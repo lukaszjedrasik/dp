@@ -9,6 +9,7 @@ const _b00dfc52 = () => interopDefault(import('../pages/kontakt/index.vue' /* we
 const _54c2d2fb = () => interopDefault(import('../pages/admin/panel/index.vue' /* webpackChunkName: "pages/admin/panel/index" */))
 const _d3ef1368 = () => interopDefault(import('../pages/admin/panel/blog/index.vue' /* webpackChunkName: "pages/admin/panel/blog/index" */))
 const _2addae43 = () => interopDefault(import('../pages/admin/panel/galeria/index.vue' /* webpackChunkName: "pages/admin/panel/galeria/index" */))
+const _ffadcee8 = () => interopDefault(import('../pages/blog/_id/index.vue' /* webpackChunkName: "pages/blog/_id/index" */))
 const _24e7fbf4 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
@@ -113,6 +114,10 @@ export function createRouter() {
       path: "/admin/panel/galeria",
       component: _2addae43,
       name: "admin-panel-galeria"
+    }, {
+      path: "/blog/:id",
+      component: _ffadcee8,
+      name: "blog-id"
     }, {
       path: "/",
       component: _24e7fbf4,
