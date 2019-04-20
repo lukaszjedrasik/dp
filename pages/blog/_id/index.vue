@@ -4,58 +4,38 @@
 
     <h1>Nails | Blog</h1>
 
-    <section class="post">
-      <img src="~assets/img/blog_photo.png" alt="blog photo nails">
-      <h2 class="title">Lorem, ipsum dolor sit amet consectetur adipisicing.</h2>
-      <div class="date">{{ `${date()} |` }}</div>
-      <h3
-        class="description"
-      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit asperiores temporibus obcaecati quam animi est expedita, accusantium sed nesciunt harum.</h3>
-      <p
-        class="description-second"
-      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam deserunt numquam labore velit itaque inventore quod at quaerat quas aperiam pariatur quae vero facere, voluptatem quidem alias incidunt reprehenderit ullam et explicabo vel saepe odio necessitatibus. Assumenda explicabo fuga enim libero sapiente autem reprehenderit temporibus vel voluptates quae exercitationem quaerat excepturi earum nisi debitis quibusdam, maiores quam rem numquam beatae quas adipisci.</p>
-      <h3 class="description">Lorem ipsum dolor sit amet.</h3>
-      <p
-        class="description-second"
-      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium illo incidunt quas ipsum sunt recusandae vero ut, cum exercitationem consequuntur repudiandae aliquam soluta vel quidem.</p>
-      <img src="~assets/img/blog_photo.png" alt="blog photo nails">
-      <h3 class="description">Lorem ipsum dolor sit amet.</h3>
-      <p
-        class="description-second"
-      >Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum voluptatibus perspiciatis rem quae modi dolorem ullam, reiciendis praesentium, commodi inventore, eaque eligendi quidem perferendis ipsam.</p>
-      <img src="~assets/img/blog_photo.png" alt="blog photo nails">
-      <img src="~assets/img/blog_photo.png" alt="blog photo nails">
+    <section class="post" v-if="this.$store.state.blog.posts">
+      <img :src="loadedPost.headImg" alt="blog photo nails">
+      <h2 class="title">{{ loadedPost.title }}</h2>
+      <div class="date">{{ loadedPost.date }}</div>
+      <h3 class="description">{{ loadedPost.shortDescription }}</h3>
+      <p class="description-second">{{ loadedPost.longDescription }}</p>
+      <img :src="loadedPost.otherImgFirst" alt="blog photo nails">
+      <h3 class="description">{{ loadedPost.otherDescriptionFirst }}</h3>
+      <p class="description-second">{{ loadedPost.otherDescriptionSecond }}</p>
+      <img :src="loadedPost.otherImgSecond" alt="blog photo nails">
+      <img :src="loadedPost.otherImgThird" alt="blog photo nails">
     </section>
   </div>
 </template>
 
 <script>
 import Hamburger from "@/components/Hamburger";
+import axios from "axios";
 
 export default {
   transition: "slide",
   components: { Hamburger },
   layout: "DesktopMenu",
-  methods: {
-    date() {
-      const months = [
-        "styczeń",
-        "luty",
-        "marzec",
-        "kwiecień",
-        "maj",
-        "czerwiec",
-        "lipiec",
-        "sierpień",
-        "wrzesień",
-        "październik",
-        "listopad",
-        "grudzień"
-      ];
-      const day = new Date().getDate();
-      const month = new Date().getMonth();
-      const year = new Date().getFullYear();
-      return `${day} ${months[month]} ${year}`;
+  middleware: "autologin",
+  async asyncData({ params }) {
+    try {
+      let { data } = await axios.get(
+        process.env.baseUrl + "/posts/" + params.id + ".json"
+      );
+      return { loadedPost: data };
+    } catch (error) {
+      console.log(error);
     }
   }
 };

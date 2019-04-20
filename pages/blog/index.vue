@@ -2,27 +2,15 @@
   <div class="container">
     <Hamburger/>
     <h1>Nails | Blog</h1>
+    <Loader v-show="this.$store.state.gallery.loader"/>
 
-    <section class="posts">
-      <nuxt-link :to="/blog/ + 1" tag="div" class="post">
+    <section class="posts" v-for="(post, index) in posts" :key="index">
+      <nuxt-link :to="/blog/ + index" tag="div" class="post" :post="post">
         <article>
-          <img src="~assets/img/blog_photo.png" alt="blog photo nails">
-          <h2 class="title">Lorem, ipsum dolor sit amet consectetur adipisicing.</h2>
-          <h3
-            class="description"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit asperiores temporibus obcaecati quam animi est expedita, accusantium sed nesciunt harum.</h3>
-          <div class="date">{{ `${date()} |` }}</div>
-          <div class="break-line"></div>
-        </article>
-      </nuxt-link>
-      <nuxt-link :to="/blog/ + 2" tag="div" class="post">
-        <article>
-          <img src="~assets/img/blog_photo.png" alt="blog photo nails">
-          <h2 class="title">Lorem, ipsum dolor sit amet consectetur adipisicing.</h2>
-          <h3
-            class="description"
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit asperiores temporibus obcaecati quam animi est expedita, accusantium sed nesciunt harum.</h3>
-          <div class="date">{{ `${date()} |` }}</div>
+          <img :src="post.headImg" alt="blog photo nails">
+          <h2 class="title">{{ post.title }}</h2>
+          <h3 class="description">{{ post.shortDescription }}</h3>
+          <div class="date">{{ post.date }}</div>
           <div class="break-line"></div>
         </article>
       </nuxt-link>
@@ -32,31 +20,20 @@
 
 <script>
 import Hamburger from "@/components/Hamburger";
+import Loader from "@/components/Loader";
+import axios from "axios";
 
 export default {
   transition: "slide",
-  components: { Hamburger },
+  components: { Hamburger, Loader },
   layout: "DesktopMenu",
-  methods: {
-    date() {
-      const months = [
-        "styczeń",
-        "luty",
-        "marzec",
-        "kwiecień",
-        "maj",
-        "czerwiec",
-        "lipiec",
-        "sierpień",
-        "wrzesień",
-        "październik",
-        "listopad",
-        "grudzień"
-      ];
-      const day = new Date().getDate();
-      const month = new Date().getMonth();
-      const year = new Date().getFullYear();
-      return `${day} ${months[month]} ${year}`;
+  middleware: "autologin",
+  async asyncData() {
+    try {
+      let { data } = await axios.get(process.env.baseUrl + "/posts.json");
+      return { posts: data };
+    } catch (error) {
+      console.log(error);
     }
   }
 };
@@ -119,6 +96,7 @@ export default {
       flex-wrap: wrap;
       .post {
         flex-basis: 45%;
+
         .title {
           margin: 1rem;
           font-size: 1.5rem;

@@ -16,9 +16,7 @@ export const actions = {
   async downloadImages({ commit }) {
     try {
       commit("SET_LOADER", true);
-      let res = await this.$axios.$get(
-        "https://dusiowe-pazurki.firebaseio.com/images.json"
-      );
+      let res = await this.$axios.$get(process.env.baseUrl + "/images.json");
       commit("SET_IMAGES", res);
       commit("SET_LOADER", false);
     } catch (error) {
@@ -27,9 +25,7 @@ export const actions = {
   },
   delete({ state }, index) {
     try {
-      this.$axios.$delete(
-        `https://dusiowe-pazurki.firebaseio.com/images/${index}.json`
-      );
+      this.$axios.$delete(process.env.baseUrl + `/images/${index}.json`);
     } catch (error) {
       console.log(error);
     }

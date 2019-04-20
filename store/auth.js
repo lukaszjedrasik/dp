@@ -56,9 +56,7 @@ export const actions = {
     let isLoggin;
 
     if (req) {
-      if (!req.headers.cookie) {
-        return (isLoggin = false);
-      }
+      if (!req.headers.cookie) return (isLoggin = false);
 
       token = cookieparser.parse(req.headers.cookie).jwt;
       email = cookieparser.parse(req.headers.cookie).emailCookie;

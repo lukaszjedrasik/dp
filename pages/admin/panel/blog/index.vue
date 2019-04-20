@@ -1,8 +1,14 @@
 <template>
   <div class="container">
+    <BackButton @back="back"/>
+    <HomeButton @home="home"/>
+    <LogoutButton @logout="logout"/>
+
     <div class="buttonContainer">
-      <button @click="show('add')">Dodaj post</button>
-      <button @click="show('remove')">Usuń post</button>
+      <button @click="add = !add">Dodaj post</button>
+      <button>
+        <nuxt-link to="blog/edit">Edytuj post</nuxt-link>
+      </button>
     </div>
 
     <div class="add" v-if="add">
@@ -17,7 +23,7 @@
           name
           id
           cols="40"
-          rows="4"
+          rows="3"
           placeholder="Krótki opis"
           v-model.trim="shortDescription"
         ></textarea>
@@ -27,7 +33,7 @@
           name
           id
           cols="40"
-          rows="4"
+          rows="3"
           placeholder="Długi opis"
           v-model.trim="longDescription"
         ></textarea>
@@ -37,30 +43,34 @@
           name
           id
           cols="40"
-          rows="4"
+          rows="3"
           placeholder="Poboczny opis"
           v-model.trim="otherDescriptionFirst"
         ></textarea>
+        <p class="error" v-if="error">Pole nie może być puste.</p>
+
         <textarea
           name
           id
           cols="40"
-          rows="4"
+          rows="3"
           placeholder="Poboczny opis"
           v-model.trim="otherDescriptionSecond"
         ></textarea>
+        <p class="error" v-if="error">Pole nie może być puste.</p>
+
         <input type="url" placeholder="Zdjęcie poboczne" v-model.trim="otherImgFirst">
+        <p class="error" v-if="error">Pole nie może być puste.</p>
+
         <input type="url" placeholder="Zdjęcie poboczne" v-model.trim="otherImgSecond">
+        <p class="error" v-if="error">Pole nie może być puste.</p>
+
         <input type="url" placeholder="Zdjęcie poboczne" v-model.trim="otherImgThird">
+        <p class="error" v-if="error">Pole nie może być puste.</p>
+
         <button type="submit" @click.prevent="addPost">Dodaj</button>
       </form>
     </div>
-
-    <div class="remove" v-if="remove"></div>
-
-    <BackButton @back="back"/>
-    <HomeButton @home="home"/>
-    <LogoutButton @logout="logout"/>
   </div>
 </template>
 
@@ -72,10 +82,9 @@ import HomeButton from "@/components/HomeButton";
 export default {
   middleware: ["autologin", "notAuthenticated"],
   components: { LogoutButton, BackButton, HomeButton },
-  asyncData({}) {
+  data() {
     return {
-      add: null,
-      remove: null,
+      add: false,
       error: false,
       headImg: "",
       title: "",
@@ -85,7 +94,8 @@ export default {
       otherDescriptionSecond: "",
       otherImgFirst: "",
       otherImgSecond: "",
-      otherImgThird: ""
+      otherImgThird: "",
+      date: null
     };
   },
   methods: {
@@ -98,37 +108,77 @@ export default {
     home() {
       this.$router.push("/");
     },
-    show(option) {
-      if (option === "add") {
-        this.add = true;
-        this.remove = false;
-      } else if (option === "remove") {
-        this.add = false;
-        this.remove = true;
-      }
+    setDate() {
+      const months = [
+        "styczeń",
+        "luty",
+        "marzec",
+        "kwiecień",
+        "maj",
+        "czerwiec",
+        "lipiec",
+        "sierpień",
+        "wrzesień",
+        "październik",
+        "listopad",
+        "grudzień"
+      ];
+      const day = new Date().getDate();
+      const month = new Date().getMonth();
+      const year = new Date().getFullYear();
+      const currentDate = `${day} ${months[month]} ${year}`;
+      this.date = currentDate;
     },
-    addPost() {
+    async addPost() {
       if (
         this.headImg !== "" &&
         this.title !== "" &&
         this.longDescription !== "" &&
-        this.shortDescription !== ""
+        this.shortDescription !== "" &&
+        this.otherDescriptionFirst !== "" &&
+        this.otherDescriptionSecond !== "" &&
+        this.otherImgFirst !== "" &&
+        this.otherImgSecond !== "" &&
+        this.otherImgThird !== ""
       ) {
         this.error = false;
-        console.log("dodano");
+
+        try {
+          let res = await this.$axios.$post(
+            process.env.baseUrl + "/posts.json",
+            {
+              headImg: this.headImg,
+              title: this.title,
+              shortDescription: this.shortDescription,
+              longDescription: this.longDescription,
+              otherDescriptionFirst: this.otherDescriptionFirst,
+              otherDescriptionSecond: this.otherDescriptionSecond,
+              otherImgFirst: this.otherImgFirst,
+              otherImgSecond: this.otherImgSecond,
+              otherImgThird: this.otherImgThird,
+              date: this.date
+            }
+          );
+
+          this.headImg = "";
+          this.title = "";
+          this.shortDescription = "";
+          this.longDescription = "";
+          this.otherDescriptionFirst = "";
+          this.otherDescriptionSecond = "";
+          this.otherImgFirst = "";
+          this.otherImgSecond = "";
+          this.otherImgThird = "";
+        } catch (error) {
+          console.log(error);
+        }
       } else {
         this.error = true;
       }
-      this.headImg = "";
-      this.title = "";
-      this.shortDescription = "";
-      this.longDescription = "";
-      this.otherDescriptionFirst = "";
-      this.otherDescriptionSecond = "";
-      this.otherImgFirst = "";
-      this.otherImgSecond = "";
-      this.otherImgThird = "";
     }
+  },
+  created() {
+    this.setDate();
   }
 };
 </script>
@@ -153,6 +203,11 @@ export default {
       color: #ff4081;
       background-color: transparent;
       outline: none;
+      a {
+        text-decoration: none;
+        color: #ff4081;
+        outline: none;
+      }
     }
   }
   .add {

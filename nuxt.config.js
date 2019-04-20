@@ -29,7 +29,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  // loading: {},
+  loading: { color: "#ffcbcf" },
 
   /*
    ** Global CSS
@@ -66,5 +66,8 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || "https://dusiowe-pazurki.firebaseio.com"
   }
 };

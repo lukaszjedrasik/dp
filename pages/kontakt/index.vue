@@ -11,7 +11,8 @@ import Hamburger from "@/components//Hamburger";
 export default {
   components: { Hamburger },
   transition: "slide",
-  layout: "DesktopMenu"
+  layout: "DesktopMenu",
+  middleware: "autologin"
 };
 </script>
 

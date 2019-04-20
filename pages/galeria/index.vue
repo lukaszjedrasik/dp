@@ -2,12 +2,17 @@
   <div class="container">
     <Hamburger></Hamburger>
     <h1>Nails | Galeria</h1>
+    <Loader v-show="this.$store.state.gallery.loader"/>
 
     <div class="gallery" v-if="canILoad">
-      <Loader v-show="this.$store.state.gallery.loader"/>
       <ul>
         <li v-for="(nail, index) in nails" :key="index">
-          <img v-lazy="nail.src" @click="openGallery(index)">
+          <img
+            v-lazy="nail.src"
+            @click="openGallery(index)"
+            :alt="nail.description"
+            :title="nail.description"
+          >
         </li>
       </ul>
       <LightBox
@@ -33,6 +38,7 @@ export default {
   },
   transition: "slide",
   layout: "DesktopMenu",
+  middleware: "autologin",
   data() {
     return {
       canILoad: false

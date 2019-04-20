@@ -11,7 +11,9 @@
 
     <div class="add" v-if="add">
       <form>
-        <input type="text" name id="image" placeholder="Link do zdjęcia" v-model.trim="img">
+        <input type="url" placeholder="Link do zdjęcia" v-model.trim="img">
+        <p class="error" v-if="error">Pole nie może być puste.</p>
+        <input type="text" placeholder="Opis zdjęcia" v-model.trim="imgDescription">
         <p class="error" v-if="error">Pole nie może być puste.</p>
         <button type="submit" @click.prevent="addImg">Dodaj</button>
       </form>
@@ -40,6 +42,7 @@ export default {
       add: null,
       remove: null,
       img: "",
+      imgDescription: "",
       error: false
     };
   },
@@ -60,20 +63,22 @@ export default {
       }
     },
     async addImg() {
-      if (this.img !== "") {
+      if (this.img !== "" && this.imgDescription !== "") {
         this.error = false;
         try {
           let response = await this.$axios.$post(
-            "https://dusiowe-pazurki.firebaseio.com/images.json",
+            process.env.baseUrl + "/images.json",
             {
               thumb: this.img,
-              src: this.img
+              src: this.img,
+              description: this.imgDescription
             }
           );
         } catch (error) {
           console.log(error);
         }
         this.img = "";
+        this.imgDescription = "";
       } else {
         this.error = true;
       }
