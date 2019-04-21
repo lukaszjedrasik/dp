@@ -12,13 +12,4 @@ export const mutations = {
   }
 };
 
-export const actions = {
-  async GET_POSTS({ commit }) {
-    try {
-      let res = await this.$axios.$get(process.env.baseUrl + "/posts.json");
-      commit("SET_POSTS", res);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-};
+export const actions = {};
