@@ -3,6 +3,10 @@
 ## Demo:
 https://dusiowe-pazurki.herokuapp.com/
 
+https://dusiowe-pazurki.herokuapp.com/admin - admin panel
+login: test@test.pl
+pass: test123
+
 ## Build Setup
 
 ``` bash
