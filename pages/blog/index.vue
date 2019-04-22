@@ -2,7 +2,6 @@
   <div class="container">
     <Hamburger/>
     <h1>Nails | Blog</h1>
-    <Loader v-show="this.$store.state.gallery.loader"/>
     <PostLists/>
   </div>
 </template>
@@ -16,12 +15,7 @@ export default {
   transition: "slide",
   components: { Hamburger, Loader, PostLists },
   layout: "DesktopMenu",
-  middleware: "autologin",
-  computed: {
-    posts() {
-      return this.$store.state.blog.posts;
-    }
-  }
+  middleware: "autologin"
 };
 </script>
 

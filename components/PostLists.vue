@@ -1,16 +1,18 @@
 <template>
   <div>
-    <section class="posts" v-for="(post, index) in posts" :key="index">
-      <nuxt-link :to="/blog/ + index" tag="div" class="post" :post="post">
-        <article>
-          <img :src="post.headImg" alt="blog photo nails">
-          <h2 class="title">{{ post.title }}</h2>
-          <h3 class="description">{{ post.shortDescription }}</h3>
-          <div class="date">{{ post.date }}</div>
-          <div class="break-line"></div>
-        </article>
-      </nuxt-link>
-    </section>
+    <div>
+      <section class="posts" v-for="(post, index) in posts" :key="index">
+        <nuxt-link :to="/blog/ + index" tag="div" class="post">
+          <article>
+            <img :src="post.headImg" alt="blog photo nails">
+            <h2 class="title">{{ post.title }}</h2>
+            <h3 class="description">{{ post.shortDescription }}</h3>
+            <div class="date">{{ post.date }}</div>
+            <div class="break-line"></div>
+          </article>
+        </nuxt-link>
+      </section>
+    </div>
   </div>
 </template>
 

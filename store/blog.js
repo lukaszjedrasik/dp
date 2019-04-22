@@ -1,15 +1,19 @@
 export const state = () => ({
-  posts: [],
-  loader: null
+  posts: []
 });
 
 export const mutations = {
   SET_POSTS(state, payload) {
     state.posts = payload;
-  },
-  SET_LOADER(state, payload) {
-    state.loader = payload;
   }
 };
 
-export const actions = {};
+export const actions = {
+  removePost({ state }, index) {
+    try {
+      this.$axios.$delete(process.env.baseUrl + "/posts/" + index + ".json");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};

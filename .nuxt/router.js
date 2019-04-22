@@ -9,7 +9,8 @@ const _b00dfc52 = () => interopDefault(import('../pages/kontakt/index.vue' /* we
 const _54c2d2fb = () => interopDefault(import('../pages/admin/panel/index.vue' /* webpackChunkName: "pages/admin/panel/index" */))
 const _d3ef1368 = () => interopDefault(import('../pages/admin/panel/blog/index.vue' /* webpackChunkName: "pages/admin/panel/blog/index" */))
 const _2addae43 = () => interopDefault(import('../pages/admin/panel/galeria/index.vue' /* webpackChunkName: "pages/admin/panel/galeria/index" */))
-const _ca04cbfa = () => interopDefault(import('../pages/admin/panel/blog/edit/index.vue' /* webpackChunkName: "pages/admin/panel/blog/edit/index" */))
+const _66f4bec4 = () => interopDefault(import('../pages/admin/panel/blog/addPost/index.vue' /* webpackChunkName: "pages/admin/panel/blog/addPost/index" */))
+const _58eb042e = () => interopDefault(import('../pages/admin/panel/blog/editPost/_id/index.vue' /* webpackChunkName: "pages/admin/panel/blog/editPost/_id/index" */))
 const _ffadcee8 = () => interopDefault(import('../pages/blog/_id/index.vue' /* webpackChunkName: "pages/blog/_id/index" */))
 const _24e7fbf4 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -116,9 +117,13 @@ export function createRouter() {
       component: _2addae43,
       name: "admin-panel-galeria"
     }, {
-      path: "/admin/panel/blog/edit",
-      component: _ca04cbfa,
-      name: "admin-panel-blog-edit"
+      path: "/admin/panel/blog/addPost",
+      component: _66f4bec4,
+      name: "admin-panel-blog-addPost"
+    }, {
+      path: "/admin/panel/blog/editPost/:id?",
+      component: _58eb042e,
+      name: "admin-panel-blog-editPost-id"
     }, {
       path: "/blog/:id",
       component: _ffadcee8,

@@ -5,71 +5,24 @@
     <LogoutButton @logout="logout"/>
 
     <div class="buttonContainer">
-      <button @click="add = !add">Dodaj post</button>
-      <button>
-        <nuxt-link to="blog/edit">Edytuj post</nuxt-link>
-      </button>
+      <nuxt-link to="blog/addPost">
+        <button>Dodaj post</button>
+      </nuxt-link>
     </div>
 
-    <div class="add" v-if="add">
-      <form>
-        <input type="url" placeholder="Zdjęcie główne" v-model.trim="headImg">
-        <p class="error" v-if="error">Pole nie może być puste.</p>
-
-        <textarea name id cols="40" rows="1" placeholder="Tytuł" v-model.trim="title"></textarea>
-        <p class="error" v-if="error">Pole nie może być puste.</p>
-
-        <textarea
-          name
-          id
-          cols="40"
-          rows="3"
-          placeholder="Krótki opis"
-          v-model.trim="shortDescription"
-        ></textarea>
-        <p class="error" v-if="error">Pole nie może być puste.</p>
-
-        <textarea
-          name
-          id
-          cols="40"
-          rows="3"
-          placeholder="Długi opis"
-          v-model.trim="longDescription"
-        ></textarea>
-        <p class="error" v-if="error">Pole nie może być puste.</p>
-
-        <textarea
-          name
-          id
-          cols="40"
-          rows="3"
-          placeholder="Poboczny opis"
-          v-model.trim="otherDescriptionFirst"
-        ></textarea>
-        <p class="error" v-if="error">Pole nie może być puste.</p>
-
-        <textarea
-          name
-          id
-          cols="40"
-          rows="3"
-          placeholder="Poboczny opis"
-          v-model.trim="otherDescriptionSecond"
-        ></textarea>
-        <p class="error" v-if="error">Pole nie może być puste.</p>
-
-        <input type="url" placeholder="Zdjęcie poboczne" v-model.trim="otherImgFirst">
-        <p class="error" v-if="error">Pole nie może być puste.</p>
-
-        <input type="url" placeholder="Zdjęcie poboczne" v-model.trim="otherImgSecond">
-        <p class="error" v-if="error">Pole nie może być puste.</p>
-
-        <input type="url" placeholder="Zdjęcie poboczne" v-model.trim="otherImgThird">
-        <p class="error" v-if="error">Pole nie może być puste.</p>
-
-        <button type="submit" @click.prevent="addPost">Dodaj</button>
-      </form>
+    <div class="posts-container">
+      <section class="posts" v-for="(post, index) in posts" :key="index">
+        <div class="post">
+          <article>
+            <img :src="post.headImg" alt="blog photo nails">
+            <h2 class="title">{{ post.title }}</h2>
+            <nuxt-link :to="`blog/editPost/${index}`" tag="div" class="edit">Edytuj</nuxt-link>
+            <div class="remove" @click="removePost(index)">
+              <i class="fas fa-times-circle"></i>
+            </div>
+          </article>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -82,22 +35,6 @@ import HomeButton from "@/components/HomeButton";
 export default {
   middleware: ["autologin", "notAuthenticated"],
   components: { LogoutButton, BackButton, HomeButton },
-  data() {
-    return {
-      add: false,
-      error: false,
-      headImg: "",
-      title: "",
-      shortDescription: "",
-      longDescription: "",
-      otherDescriptionFirst: "",
-      otherDescriptionSecond: "",
-      otherImgFirst: "",
-      otherImgSecond: "",
-      otherImgThird: "",
-      date: null
-    };
-  },
   methods: {
     logout() {
       this.$store.dispatch("auth/logout");
@@ -108,77 +45,14 @@ export default {
     home() {
       this.$router.push("/");
     },
-    setDate() {
-      const months = [
-        "styczeń",
-        "luty",
-        "marzec",
-        "kwiecień",
-        "maj",
-        "czerwiec",
-        "lipiec",
-        "sierpień",
-        "wrzesień",
-        "październik",
-        "listopad",
-        "grudzień"
-      ];
-      const day = new Date().getDate();
-      const month = new Date().getMonth();
-      const year = new Date().getFullYear();
-      const currentDate = `${day} ${months[month]} ${year}`;
-      this.date = currentDate;
-    },
-    async addPost() {
-      if (
-        this.headImg !== "" &&
-        this.title !== "" &&
-        this.longDescription !== "" &&
-        this.shortDescription !== "" &&
-        this.otherDescriptionFirst !== "" &&
-        this.otherDescriptionSecond !== "" &&
-        this.otherImgFirst !== "" &&
-        this.otherImgSecond !== "" &&
-        this.otherImgThird !== ""
-      ) {
-        this.error = false;
-
-        try {
-          let res = await this.$axios.$post(
-            process.env.baseUrl + "/posts.json",
-            {
-              headImg: this.headImg,
-              title: this.title,
-              shortDescription: this.shortDescription,
-              longDescription: this.longDescription,
-              otherDescriptionFirst: this.otherDescriptionFirst,
-              otherDescriptionSecond: this.otherDescriptionSecond,
-              otherImgFirst: this.otherImgFirst,
-              otherImgSecond: this.otherImgSecond,
-              otherImgThird: this.otherImgThird,
-              date: this.date
-            }
-          );
-
-          this.headImg = "";
-          this.title = "";
-          this.shortDescription = "";
-          this.longDescription = "";
-          this.otherDescriptionFirst = "";
-          this.otherDescriptionSecond = "";
-          this.otherImgFirst = "";
-          this.otherImgSecond = "";
-          this.otherImgThird = "";
-        } catch (error) {
-          console.log(error);
-        }
-      } else {
-        this.error = true;
-      }
+    async removePost(index) {
+      await this.$store.dispatch("blog/removePost", index);
     }
   },
-  created() {
-    this.setDate();
+  computed: {
+    posts() {
+      return this.$store.state.blog.posts;
+    }
   }
 };
 </script>
@@ -191,6 +65,7 @@ export default {
   flex-direction: column;
   align-items: center;
   background-color: #ffcbcf;
+  color: #fff;
   .buttonContainer {
     display: flex;
     flex-direction: column;
@@ -210,34 +85,62 @@ export default {
       }
     }
   }
-  .add {
-    width: 90%;
-    text-align: center;
-    form {
+  .posts-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    .posts {
       display: flex;
-      flex-direction: column;
-      input,
-      textarea {
-        margin: 0.5rem 0;
-        padding: 1rem 0;
-        border: none;
-        border-radius: 0.5rem;
-        text-align: center;
-        outline: none;
+      justify-content: center;
+      margin: 2rem 0;
+      width: 20rem;
+      height: 25rem;
+      text-align: center;
+      .post {
+        position: relative;
+        width: 100%;
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
+          0 15px 12px rgba(0, 0, 0, 0.22);
+        img {
+          padding: 1rem 0;
+          width: 90%;
+          border-radius: 1rem;
+        }
+        .title {
+          margin: 1rem;
+          font-size: 2rem;
+        }
+        .edit {
+          margin-bottom: 1rem;
+          font-size: 1.5rem;
+          color: #757575;
+        }
+        .remove {
+          position: absolute;
+          top: -1.5rem;
+          right: -1.5rem;
+          color: #d50000;
+          font-size: 3.5rem;
+          opacity: 0.8;
+        }
       }
-      .error {
-        margin: 1rem auto;
-        font-size: 1.5rem;
-        color: red;
-      }
-      button {
-        width: 50%;
-        margin: 2rem auto;
-        padding: 1rem 0;
-        border: 1px solid #ff4081;
-        border-radius: 0.5rem;
-        background-color: transparent;
-        outline: none;
+    }
+  }
+
+  @media (orientation: landscape) {
+    .posts {
+      flex-direction: row;
+      flex-wrap: wrap;
+      .post {
+        .title {
+          margin: 1rem;
+          font-size: 1.5rem;
+        }
+        .edit {
+          font-size: 0.8rem;
+        }
       }
     }
   }
