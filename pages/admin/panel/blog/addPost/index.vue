@@ -137,36 +137,28 @@ export default {
         this.otherImgThird !== ""
       ) {
         this.error = false;
+        this.$store.dispatch("blog/getNewPost", {
+          headImg: this.headImg,
+          title: this.title,
+          shortDescription: this.shortDescription,
+          longDescription: this.longDescription,
+          otherDescriptionFirst: this.otherDescriptionFirst,
+          otherDescriptionSecond: this.otherDescriptionSecond,
+          otherImgFirst: this.otherImgFirst,
+          otherImgSecond: this.otherImgSecond,
+          otherImgThird: this.otherImgThird,
+          date: this.date
+        });
 
-        try {
-          let res = await this.$axios.$post(
-            process.env.baseUrl + "/posts.json",
-            {
-              headImg: this.headImg,
-              title: this.title,
-              shortDescription: this.shortDescription,
-              longDescription: this.longDescription,
-              otherDescriptionFirst: this.otherDescriptionFirst,
-              otherDescriptionSecond: this.otherDescriptionSecond,
-              otherImgFirst: this.otherImgFirst,
-              otherImgSecond: this.otherImgSecond,
-              otherImgThird: this.otherImgThird,
-              date: this.date
-            }
-          );
-
-          this.headImg = "";
-          this.title = "";
-          this.shortDescription = "";
-          this.longDescription = "";
-          this.otherDescriptionFirst = "";
-          this.otherDescriptionSecond = "";
-          this.otherImgFirst = "";
-          this.otherImgSecond = "";
-          this.otherImgThird = "";
-        } catch (error) {
-          console.log(error);
-        }
+        this.headImg = "";
+        this.title = "";
+        this.shortDescription = "";
+        this.longDescription = "";
+        this.otherDescriptionFirst = "";
+        this.otherDescriptionSecond = "";
+        this.otherImgFirst = "";
+        this.otherImgSecond = "";
+        this.otherImgThird = "";
       } else {
         this.error = true;
       }

@@ -18,7 +18,7 @@
             <h2 class="title">{{ post.title }}</h2>
             <nuxt-link :to="`blog/editPost/${index}`" tag="div" class="edit">Edytuj</nuxt-link>
             <div class="remove" @click="removePost(index)">
-              <i class="fas fa-times-circle"></i>
+              <i class="fas fa-times"></i>
             </div>
           </article>
         </div>
@@ -47,6 +47,7 @@ export default {
     },
     async removePost(index) {
       await this.$store.dispatch("blog/removePost", index);
+      this.$store.commit("blog/DELETE_POST", index);
     }
   },
   computed: {
@@ -101,12 +102,12 @@ export default {
       .post {
         position: relative;
         width: 100%;
+        border-radius: 1rem;
         box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3),
           0 15px 12px rgba(0, 0, 0, 0.22);
         img {
           padding: 1rem 0;
           width: 90%;
-          border-radius: 1rem;
         }
         .title {
           margin: 1rem;
@@ -119,8 +120,8 @@ export default {
         }
         .remove {
           position: absolute;
-          top: -1.5rem;
-          right: -1.5rem;
+          top: -1.8rem;
+          right: -1.2rem;
           color: #d50000;
           font-size: 3.5rem;
           opacity: 0.8;

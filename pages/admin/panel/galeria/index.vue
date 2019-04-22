@@ -21,8 +21,11 @@
 
     <div class="remove" v-if="remove">
       <ul>
-        <li v-for="(nail, index) in nails" :key="index" @click="deleteImg(index)">
+        <li v-for="(nail, index) in nails" :key="index">
           <img v-lazy="nail.src">
+          <div class="removeImg" @click="deleteImg(index)">
+            <i class="fas fa-times"></i>
+          </div>
         </li>
       </ul>
     </div>
@@ -62,21 +65,17 @@ export default {
         this.remove = true;
       }
     },
-    async addImg() {
+    addImg() {
       if (this.img !== "" && this.imgDescription !== "") {
         this.error = false;
-        try {
-          let response = await this.$axios.$post(
-            process.env.baseUrl + "/images.json",
-            {
-              thumb: this.img,
-              src: this.img,
-              description: this.imgDescription
-            }
-          );
-        } catch (error) {
-          console.log(error);
-        }
+        this.$store.dispatch("gallery/newImg", {
+          thumb: this.img,
+          src: this.img,
+          description: this.imgDescription
+        });
+
+        this.remove = true;
+        this.add = false;
         this.img = "";
         this.imgDescription = "";
       } else {
@@ -85,6 +84,7 @@ export default {
     },
     async deleteImg(index) {
       await this.$store.dispatch("gallery/delete", index);
+      this.$store.commit("gallery/DELETE_IMG", index);
     },
     home() {
       this.$router.push("/");
@@ -96,9 +96,6 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch("gallery/downloadImages");
-  },
-  beforeUpdate() {
     this.$store.dispatch("gallery/downloadImages");
   }
 };
@@ -164,11 +161,20 @@ export default {
       flex-wrap: wrap;
       list-style-type: none;
       li {
+        position: relative;
         display: flex;
         justify-content: center;
         margin: 0.5rem;
         img {
-          height: 100px;
+          height: 150px;
+          border-radius: 1rem;
+        }
+        .removeImg {
+          position: absolute;
+          top: -1.5rem;
+          right: -0.9rem;
+          color: #d50000;
+          font-size: 3.5rem;
         }
       }
     }

@@ -83,16 +83,7 @@ export default {
       );
       return {
         error: false,
-        headImg: data.headImg,
-        title: data.title,
-        shortDescription: data.shortDescription,
-        longDescription: data.longDescription,
-        otherDescriptionFirst: data.otherDescriptionFirst,
-        otherDescriptionSecond: data.otherDescriptionSecond,
-        otherImgFirst: data.otherImgFirst,
-        otherImgSecond: data.otherImgSecond,
-        otherImgThird: data.otherImgThird,
-        date: data.date
+        ...data
       };
     } catch (error) {
       console.log(error);
@@ -145,37 +136,21 @@ export default {
         this.otherImgThird !== ""
       ) {
         this.error = false;
+        const params = this.$route.params.id;
 
-        try {
-          let res = await this.$axios.$put(
-            process.env.baseUrl + "/posts/" + this.$route.params.id + ".json",
-            {
-              headImg: this.headImg,
-              title: this.title,
-              shortDescription: this.shortDescription,
-              longDescription: this.longDescription,
-              otherDescriptionFirst: this.otherDescriptionFirst,
-              otherDescriptionSecond: this.otherDescriptionSecond,
-              otherImgFirst: this.otherImgFirst,
-              otherImgSecond: this.otherImgSecond,
-              otherImgThird: this.otherImgThird,
-              date: this.date
-            }
-          );
-          console.log(res);
-
-          this.headImg = "";
-          this.title = "";
-          this.shortDescription = "";
-          this.longDescription = "";
-          this.otherDescriptionFirst = "";
-          this.otherDescriptionSecond = "";
-          this.otherImgFirst = "";
-          this.otherImgSecond = "";
-          this.otherImgThird = "";
-        } catch (error) {
-          console.log(error);
-        }
+        this.$store.dispatch("blog/editPost", {
+          headImg: this.headImg,
+          title: this.title,
+          shortDescription: this.shortDescription,
+          longDescription: this.longDescription,
+          otherDescriptionFirst: this.otherDescriptionFirst,
+          otherDescriptionSecond: this.otherDescriptionSecond,
+          otherImgFirst: this.otherImgFirst,
+          otherImgSecond: this.otherImgSecond,
+          otherImgThird: this.otherImgThird,
+          date: this.date,
+          key: params
+        });
       } else {
         this.error = true;
       }
