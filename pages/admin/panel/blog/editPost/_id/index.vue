@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <BackButton @back="back"/>
-    <HomeButton @home="home"/>
-    <LogoutButton @logout="logout"/>
+    <AdminNavigation @back="back" @home="home" @logout="logout"/>
 
     <div class="add">
       <form>
@@ -68,14 +66,12 @@
 </template>
 
 <script>
-import LogoutButton from "@/components/LogoutButton";
-import BackButton from "@/components/BackButton";
-import HomeButton from "@/components/HomeButton";
+import AdminNavigation from "@/components/UI/AdminNavigation";
 import axios from "axios";
 
 export default {
   middleware: ["autologin", "notAuthenticated"],
-  components: { LogoutButton, BackButton, HomeButton },
+  components: { AdminNavigation },
   async asyncData({ params }) {
     try {
       let { data } = await axios.get(

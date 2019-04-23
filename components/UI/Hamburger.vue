@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SideMenu from "@/components/SideMenu";
+import SideMenu from "@/components/UI/SideMenu";
 
 export default {
   name: "Hamburger",

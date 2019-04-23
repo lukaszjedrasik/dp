@@ -1,9 +1,7 @@
 <template>
   <div class="container">
+    <AdminNavigation @home="home" @logout="logout"/>
     <h1 class="name" v-if="this.$store.state.auth.email">Witaj {{ name() }}</h1>
-
-    <HomeButton @home="home"/>
-    <LogoutButton @logout="logout"/>
 
     <section class="select">
       <div class="item">
@@ -23,12 +21,11 @@
 </template>
 
 <script>
-import LogoutButton from "@/components/LogoutButton";
-import HomeButton from "@/components/HomeButton";
+import AdminNavigation from "@/components/UI/AdminNavigation";
 
 export default {
   middleware: ["autologin", "notAuthenticated"],
-  components: { LogoutButton, HomeButton },
+  components: { AdminNavigation },
   methods: {
     name() {
       if (this.$store.state.auth.email === "lukaszj93@onet.eu") {
@@ -55,7 +52,7 @@ export default {
   height: 100vh;
   background-color: #ffcbcf;
   .name {
-    margin-top: 5rem;
+    padding: 4rem 0 0.5rem 0;
     text-align: center;
     color: #ff4081;
     font-size: 3rem;

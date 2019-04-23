@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import Hamburger from "@/components//Hamburger";
-import Loader from "@/components/Loader";
+import Hamburger from "@/components/UI/Hamburger";
+import Loader from "@/components/UI/Loader";
 
 export default {
   components: {

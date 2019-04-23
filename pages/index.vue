@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import Hamburger from "@/components//Hamburger";
+import Hamburger from "@/components/UI/Hamburger";
 
 export default {
   components: { Hamburger },
