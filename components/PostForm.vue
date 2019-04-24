@@ -14,6 +14,7 @@
             @change="onHeadImg"
           >
         </label>
+        <p class="error" v-if="error">Pole nie może być puste.</p>
 
         <textarea name id cols="40" rows="1" placeholder="Tytuł" v-model.trim="title"></textarea>
         <p class="error" v-if="error">Pole nie może być puste.</p>
@@ -94,7 +95,7 @@
         </label>
         <p class="error" v-if="error">Pole nie może być puste.</p>
 
-        <button type="submit" @click.prevent="editPost">Edytuj</button>
+        <button type="submit" @click.prevent="addPost">Dodaj</button>
       </form>
     </div>
   </div>
@@ -103,24 +104,25 @@
 <script>
 import AdminNavigation from "@/components/UI/AdminNavigation";
 import { imagesFiles, setDate } from "@/mixins/mixins.js";
-import axios from "axios";
 
 export default {
-  middleware: ["autologin", "notAuthenticated"],
+  name: "PostForm",
   components: { AdminNavigation },
   mixins: [imagesFiles, setDate],
-  async asyncData({ params }) {
-    try {
-      let { data } = await axios.get(
-        process.env.baseUrl + "/posts/" + params.id + ".json"
-      );
-      return {
-        error: false,
-        ...data
-      };
-    } catch (error) {
-      console.log(error);
-    }
+  data() {
+    return {
+      error: false,
+      headImg: "",
+      title: "",
+      shortDescription: "",
+      longDescription: "",
+      otherDescriptionFirst: "",
+      otherDescriptionSecond: "",
+      otherImgFirst: "",
+      otherImgSecond: "",
+      otherImgThird: "",
+      date: null
+    };
   },
   methods: {
     logout() {
@@ -132,7 +134,7 @@ export default {
     home() {
       this.$router.push("/");
     },
-    async editPost() {
+    async addPost() {
       if (
         this.headImg !== "" &&
         this.title !== "" &&
@@ -145,9 +147,7 @@ export default {
         this.otherImgThird !== ""
       ) {
         this.error = false;
-        const params = this.$route.params.id;
-
-        this.$store.dispatch("blog/editPost", {
+        this.$store.dispatch("blog/getNewPost", {
           headImg: this.headImg,
           title: this.title,
           shortDescription: this.shortDescription,
@@ -157,9 +157,18 @@ export default {
           otherImgFirst: this.otherImgFirst,
           otherImgSecond: this.otherImgSecond,
           otherImgThird: this.otherImgThird,
-          date: this.date,
-          key: params
+          date: this.date
         });
+
+        this.headImg = "";
+        this.title = "";
+        this.shortDescription = "";
+        this.longDescription = "";
+        this.otherDescriptionFirst = "";
+        this.otherDescriptionSecond = "";
+        this.otherImgFirst = "";
+        this.otherImgSecond = "";
+        this.otherImgThird = "";
       } else {
         this.error = true;
       }
@@ -184,8 +193,10 @@ export default {
     form {
       display: flex;
       flex-direction: column;
+      align-items: center;
       input,
       textarea {
+        width: 100%;
         margin: 0.5rem 0;
         padding: 1rem 0;
         border: none;

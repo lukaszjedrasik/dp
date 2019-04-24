@@ -28,7 +28,8 @@
     "vue-gallery": "^2.0.0",
     "vue-image-lightbox": "^6.2.0",
     "vue-lazyload": "^1.2.6",
-    "vue2-touch": "^1.0.8"
+    "vue2-touch": "^1.0.8",
+    "vuelidate": "^0.7.4"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"

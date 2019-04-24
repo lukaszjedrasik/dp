@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "Adminnavigation",
+  name: "AdminNavigation",
   data() {
     return {
       backButtonDisplayNone: false,
@@ -65,6 +65,7 @@ export default {
   height: auto;
   text-align: center;
   transition: 1s;
+  z-index: 999;
   button {
     margin: 0 2rem;
     border: none;

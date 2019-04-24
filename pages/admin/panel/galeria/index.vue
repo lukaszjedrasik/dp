@@ -9,8 +9,7 @@
 
     <div class="add" v-if="add">
       <form>
-        <input type="url" placeholder="Link do zdjęcia" v-model.trim="img">
-        <p class="error" v-if="error">Pole nie może być puste.</p>
+        <input type="file" name="image" @change="imgFile">
         <input type="text" placeholder="Opis zdjęcia" v-model.trim="imgDescription">
         <p class="error" v-if="error">Pole nie może być puste.</p>
         <button type="submit" @click.prevent="addImg">Dodaj</button>
@@ -46,6 +45,14 @@ export default {
     };
   },
   methods: {
+    imgFile(e) {
+      let image = e.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = e => {
+        this.img = e.target.result;
+      };
+    },
     logout() {
       this.$store.dispatch("auth/logout");
     },

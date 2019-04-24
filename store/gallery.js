@@ -9,9 +9,6 @@ export const mutations = {
   SET_IMAGES(state, payload) {
     state.photos = payload;
   },
-  NEW_IMAGES(state, payload) {
-    state.photos = payload;
-  },
   ADD_IMG(state, payload) {
     Vue.set(state.photos, payload.key, payload);
   },

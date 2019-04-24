@@ -2,8 +2,8 @@
   <div class="container">
     <Hamburger/>
     <form>
-      <input type="email" placeholder="E-mail" required v-model="email">
-      <input type="password" placeholder="Hasło" required v-model="password">
+      <input type="email" placeholder="E-mail" required v-model.trim="email">
+      <input type="password" placeholder="Hasło" required v-model.trim="password">
       <button @click.prevent="submit">ZALOGUJ</button>
     </form>
   </div>
@@ -19,7 +19,8 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      error: false
     };
   },
   methods: {
@@ -32,7 +33,12 @@ export default {
         });
         this.email = "";
         this.password = "";
+      } else {
       }
+    },
+    setPassword(value) {
+      this.password = value;
+      this.$v.password.$touch();
     }
   }
 };
@@ -63,8 +69,6 @@ export default {
       font-size: 2rem;
       outline: none;
       color: #ffcbcf;
-      &:focus {
-      }
     }
     button {
       width: 15rem;
