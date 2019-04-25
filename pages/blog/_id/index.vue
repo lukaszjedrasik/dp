@@ -89,4 +89,80 @@ export default {
     }
   }
 }
+@media (min-width: 768px) {
+  .container {
+    .post {
+      width: 80%;
+      .title {
+        font-size: 4.5rem;
+      }
+      .description {
+        font-size: 2rem;
+      }
+      .description-second {
+        font-size: 2rem;
+      }
+      .date {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    h1 {
+      display: none;
+    }
+    .post {
+      width: 75%;
+      margin: 12rem auto 4rem auto;
+      .title {
+        font-size: 5rem;
+      }
+      .description {
+        font-size: 2.5rem;
+      }
+      .description-second {
+        font-size: 2.5rem;
+      }
+      .date {
+        font-size: 2.1rem;
+      }
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    .post {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      width: 70%;
+      margin: 10rem auto 4rem auto;
+      img {
+        margin: 2rem auto;
+        width: 45%;
+        height: 250px;
+        transition: 0.5s;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      .title {
+        width: 100%;
+        font-size: 4rem;
+      }
+      .description {
+        font-size: 2rem;
+      }
+      .description-second {
+        font-size: 2.5rem;
+      }
+      .date {
+        font-size: 2.1rem;
+      }
+    }
+  }
+}
 </style>

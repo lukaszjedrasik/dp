@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     changeNavColor() {
-      if (window.scrollY >= 300) {
+      if (window.scrollY >= 50) {
         this.bgMenu = true;
       } else {
         this.bgMenu = false;
@@ -73,7 +73,7 @@ ul {
     }
   }
   @media (min-width: 1024px) {
-    padding: 2rem 0 0 3rem;
+    padding: 0 0 0 3rem;
     li {
       font-size: 3.8rem;
     }

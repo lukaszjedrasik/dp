@@ -93,12 +93,22 @@ export default {
       list-style-type: none;
       li {
         display: flex;
-        justify-content: center;
-        margin: 1rem;
         img {
-          height: 70px;
+          width: 100px;
+          height: 100px;
+          border-radius: 5px;
         }
       }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    h1 {
+      display: none;
+    }
+    .gallery {
+      margin: 12rem auto 4rem auto;
     }
   }
 }

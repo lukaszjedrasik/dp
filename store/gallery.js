@@ -49,9 +49,9 @@ export const actions = {
         key: res.name,
         ...payload
       });
-      this.$router.push("/admin/panel/galeria");
     } catch (error) {
       console.log(error);
     }
+    this.$router.push("/admin/panel/galeria");
   }
 };

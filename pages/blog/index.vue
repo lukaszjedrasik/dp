@@ -35,4 +35,9 @@ export default {
     text-align: left;
   }
 }
+@media (min-width: 1024px) {
+  h1 {
+    display: none;
+  }
+}
 </style>
