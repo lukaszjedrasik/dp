@@ -41,8 +41,7 @@ export default {
    */
   plugins: [
     { src: "~plugins/aos", ssr: false },
-    { src: "~/plugins/vue-lightbox-plugin", mode: "client", ssr: false },
-    { src: "~/plugins/vuelidate", ssr: false }
+    { src: "~/plugins/vue-lightbox-plugin", mode: "client", ssr: false }
   ],
 
   /*
