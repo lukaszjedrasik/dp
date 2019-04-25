@@ -72,11 +72,28 @@ export default {
     }
   }
 }
+@media (min-width: 768px) {
+  .slide-menu-off {
+    ul {
+      li {
+        font-size: 6rem;
+      }
+    }
+  }
+  .slide-menu-off.sideMenuOn {
+    ul {
+      li {
+        font-size: 6rem;
+      }
+    }
+  }
+}
 @media (orientation: landscape) {
   .slide-menu-off {
     ul {
       li {
         margin: 0;
+        font-size: 3rem;
       }
     }
   }
@@ -84,6 +101,7 @@ export default {
     ul {
       li {
         margin: 0;
+        font-size: 3rem;
       }
     }
   }

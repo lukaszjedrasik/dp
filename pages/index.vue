@@ -17,7 +17,7 @@
         </div>
         <img
           class="nailImage"
-          src="~assets/img/1.jpeg"
+          src="~assets/img/2.jpg"
           alt="nail nails"
           data-aos="zoom-in-up"
           data-aos-once="true"
@@ -30,7 +30,7 @@
         </div>
         <img
           class="nailImage"
-          src="~assets/img/1.jpeg"
+          src="~assets/img/3.jpg"
           alt="nail nails"
           data-aos="zoom-in-up"
           data-aos-once="true"
@@ -43,7 +43,7 @@
         </div>
         <img
           class="nailImage"
-          src="~assets/img/1.jpeg"
+          src="~assets/img/4.jpg"
           alt="nail nails"
           data-aos="zoom-in-up"
           data-aos-once="true"

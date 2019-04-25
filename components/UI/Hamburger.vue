@@ -78,7 +78,7 @@ export default {
       top: 20px;
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     display: none;
   }
 }

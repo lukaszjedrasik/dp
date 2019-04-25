@@ -64,20 +64,49 @@ ul {
     cursor: pointer;
     transition: 0.5s;
   }
-  @media (max-width: 767px) {
+  @media (max-width: 960px) {
     display: none;
   }
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     li {
-      margin: 2rem;
+      margin: 1rem 2.2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    padding: 2rem 0 0 3rem;
+    li {
+      font-size: 3.8rem;
     }
   }
   @media (orientation: landscape) and (min-width: 1024px) {
+    justify-content: flex-start;
+    padding: 0 0 0 3rem;
+    li {
+      position: relative;
+      font-size: 3.5rem;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+    .active::before {
+      content: "";
+      position: absolute;
+      bottom: 0.7rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      border-bottom: 1px solid #fff;
+    }
+  }
+  @media (orientation: landscape) and (min-width: 1200px) {
+    justify-content: center;
+  }
+  @media (orientation: landscape) and (min-width: 1366px) {
     justify-content: center;
     li {
       position: relative;
-      margin: 1rem 4rem;
-      font-size: 3.5rem;
+      padding: 0 2rem;
+      font-size: 4rem;
       &:hover {
         transform: scale(1.2);
       }

@@ -7,14 +7,14 @@
       <div class="item">
         <nuxt-link to="/admin/panel/blog">
           <img src="~assets/img/blog.jpg" alt="blog">
+          <p>Blog</p>
         </nuxt-link>
-        <p>Blog</p>
       </div>
       <div class="item">
         <nuxt-link to="/admin/panel/galeria">
           <img src="~assets/img/gallery.jpg" alt="gallery">
+          <p>Galeria</p>
         </nuxt-link>
-        <p>Galeria</p>
       </div>
     </section>
   </div>
