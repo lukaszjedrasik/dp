@@ -4,8 +4,22 @@
 https://dusiowe-pazurki.herokuapp.com/
 
 https://dusiowe-pazurki.herokuapp.com/admin - admin panel
-login: test@test.pl
-pass: test123
+- login: test@test.pl
+- pass: test123
+
+# Technology used:
+- Vue.js
+- Nuxt.js
+- VueX
+- Axios
+- SCSS
+- Animate On Scroll (AOS)
+- Vue Gallery
+- Vue Image Lightbox
+- Cookieparser
+- JS-Cookie
+- Fontawesome
+
 
 ## Build Setup
 
