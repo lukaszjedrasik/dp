@@ -121,8 +121,11 @@ export default {
     align-items: center;
     margin: 7rem 0 2rem 0;
     button {
-      margin-bottom: 1rem;
-      border: none;
+      margin: 1rem 0;
+      width: 100%;
+      padding: 0.5rem 2rem;
+      border: 1px solid #ff4081;
+      border-radius: 5px;
       font-size: 2rem;
       color: #ff4081;
       background-color: transparent;
@@ -142,7 +145,7 @@ export default {
         display: none;
       }
       [type="file"] + label {
-        width: 20rem;
+        width: 15rem;
         text-align: center;
         color: #fff;
         cursor: pointer;
@@ -160,7 +163,6 @@ export default {
         }
       }
       input {
-        width: 50rem;
         margin: 0.5rem auto;
         padding: 1rem 2rem;
         text-align: center;
@@ -174,9 +176,8 @@ export default {
         color: red;
       }
       button {
-        width: 20rem;
         margin: 2rem auto;
-        padding: 1rem 0;
+        padding: 1rem 5rem;
         border: 1px solid #ff4081;
         border-radius: 0.5rem;
         background-color: transparent;
