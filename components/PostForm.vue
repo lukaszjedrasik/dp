@@ -4,15 +4,9 @@
 
     <div class="add">
       <form>
-        <label for="headImg">
-          Zdjęcie główne:
-          <input
-            type="file"
-            name="headImg"
-            id="headImg"
-            class="input-file"
-            @change="onHeadImg"
-          >
+        <input type="file" id="file" @change="onHeadImg">
+        <label for="file" class="btn-3">
+          <span>Wgraj zdjęcie</span>
         </label>
         <p class="error" v-if="error">Pole nie może być puste.</p>
 
@@ -59,41 +53,25 @@
         ></textarea>
         <p class="error" v-if="error">Pole nie może być puste.</p>
 
-        <label for="otherImgFirst">
-          Zdjęcie poboczne:
-          <input
-            type="file"
-            name="otherImgFirst"
-            id="otherImgFirst"
-            class="input-file"
-            @change="onOtherImgFirst"
-          >
-        </label>
-        <p class="error" v-if="error">Pole nie może być puste.</p>
+        <div class="threeButton">
+          <div class="button-container">
+            <input type="file" id="onOtherImgFirst" @change="onOtherImgFirst">
+            <label for="onOtherImgFirst" class="btn-3">
+              <span>Wgraj zdjęcie</span>
+            </label>
 
-        <label for="otherImgSecond">
-          Zdjęcie poboczne:
-          <input
-            type="file"
-            name="otherImgSecond"
-            id="otherImgSecond"
-            class="input-file"
-            @change="onOtherImgSecond"
-          >
-        </label>
-        <p class="error" v-if="error">Pole nie może być puste.</p>
+            <input type="file" id="onOtherImgSecond" @change="onOtherImgSecond">
+            <label for="onOtherImgSecond" class="btn-3">
+              <span>Wgraj zdjęcie</span>
+            </label>
 
-        <label for="otherImgThird">
-          Zdjęcie poboczne:
-          <input
-            type="file"
-            name="otherImgThird"
-            id="otherImgThird"
-            class="input-file"
-            @change="onOtherImgThird"
-          >
-        </label>
-        <p class="error" v-if="error">Pole nie może być puste.</p>
+            <input type="file" id="onOtherImgThird" @change="onOtherImgThird">
+            <label for="onOtherImgThird" class="btn-3">
+              <span>Wgraj zdjęcie</span>
+            </label>
+          </div>
+          <p class="error" v-if="error">Pole nie może być puste.</p>
+        </div>
 
         <button type="submit" @click.prevent="addPost">Dodaj</button>
       </form>
@@ -179,7 +157,8 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  max-width: 100%;
+  max-width: 1680px;
+  margin: 0 auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -187,13 +166,14 @@ export default {
   background-color: #ffcbcf;
 
   .add {
-    width: 90%;
+    width: 80%;
     margin: 5rem 0 2rem 0;
     text-align: center;
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-top: 3rem;
       input,
       textarea {
         width: 100%;
@@ -204,14 +184,7 @@ export default {
         text-align: center;
         outline: none;
       }
-      label {
-        display: flex;
-        flex-direction: column;
-        border: 2px solid black;
-      }
-      .input-file {
-        margin-left: 5rem;
-      }
+
       .error {
         margin: 1rem auto;
         font-size: 1.5rem;
@@ -225,6 +198,42 @@ export default {
         border-radius: 0.5rem;
         background-color: transparent;
         outline: none;
+      }
+      [type="file"] {
+        height: 0;
+        overflow: hidden;
+        width: 0;
+        display: none;
+      }
+      [type="file"] + label {
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 1.2rem;
+        margin: 1rem;
+        outline: none;
+        padding: 1rem 5rem;
+        position: relative;
+
+        &.btn-3 {
+          background-color: #ee6d9e;
+          border-radius: 5px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+@media (orientation: landscape) {
+  .container {
+    .add {
+      form {
+        .threeButton {
+          margin-top: 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
       }
     }
   }

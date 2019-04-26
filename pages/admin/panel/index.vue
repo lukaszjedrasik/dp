@@ -52,7 +52,7 @@ export default {
   height: 100vh;
   background-color: #ffcbcf;
   .name {
-    padding: 4rem 0 0.5rem 0;
+    margin-top: 5rem;
     text-align: center;
     color: #ff4081;
     font-size: 3rem;
@@ -94,6 +94,92 @@ export default {
         text-align: center;
         font-weight: 700;
         z-index: 2;
+      }
+    }
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    .name {
+      font-size: 5rem;
+    }
+
+    .select {
+      width: 70vw;
+      .item {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0;
+        p {
+          font-size: 3.5rem;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    .name {
+      margin-top: 7rem;
+    }
+  }
+}
+@media (orientation: landscape) {
+  .container {
+    .select {
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      height: auto;
+      .item {
+        width: 45%;
+        justify-content: center;
+        margin: 3rem 1rem 0 1rem;
+        p {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+@media (orientation: landscape) and (min-width: 568px) {
+  .container {
+    .select {
+      .item {
+        width: 40%;
+        p {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+@media (orientation: landscape) and (min-width: 736px) {
+  .container {
+    .name {
+      font-size: 4rem;
+    }
+    .select {
+      .item {
+        width: 40%;
+        a {
+        }
+        p {
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+}
+@media (orientation: landscape) and (min-width: 1200px) {
+  .container {
+    .select {
+      .item {
+        margin: 8rem 2rem;
+        p {
+          font-size: 3.5rem;
+        }
       }
     }
   }

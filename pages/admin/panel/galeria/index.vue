@@ -9,7 +9,10 @@
 
     <div class="add" v-if="add">
       <form>
-        <input type="file" name="image" @change="imgFile">
+        <input type="file" id="file" @change="imgFile">
+        <label for="file" class="btn-3">
+          <span>Wgraj zdjęcie</span>
+        </label>
         <input type="text" placeholder="Opis zdjęcia" v-model.trim="imgDescription">
         <p class="error" v-if="error">Pole nie może być puste.</p>
         <button type="submit" @click.prevent="addImg">Dodaj</button>
@@ -131,8 +134,33 @@ export default {
     form {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      [type="file"] {
+        height: 0;
+        overflow: hidden;
+        width: 0;
+        display: none;
+      }
+      [type="file"] + label {
+        width: 20rem;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 1.2rem;
+        margin: 1rem;
+        outline: none;
+        padding: 1rem 5rem;
+        position: relative;
+
+        &.btn-3 {
+          background-color: #ee6d9e;
+          border-radius: 5px;
+          overflow: hidden;
+        }
+      }
       input {
-        width: 80%;
+        width: 50rem;
         margin: 0.5rem auto;
         padding: 1rem 2rem;
         text-align: center;
@@ -146,7 +174,7 @@ export default {
         color: red;
       }
       button {
-        width: 50%;
+        width: 20rem;
         margin: 2rem auto;
         padding: 1rem 0;
         border: 1px solid #ff4081;

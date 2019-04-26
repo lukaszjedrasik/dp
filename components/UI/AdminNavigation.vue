@@ -61,7 +61,9 @@ export default {
 .admin-navigation-container {
   position: fixed;
   top: 0;
-  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   height: auto;
   text-align: center;
   transition: 1s;
@@ -87,6 +89,20 @@ export default {
   button {
     i {
       color: #fff;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .admin-navigation-container {
+    button {
+      font-size: 3rem;
+    }
+  }
+}
+@media (min-width: 1024px) {
+  .admin-navigation-container {
+    button {
+      font-size: 3.5rem;
     }
   }
 }
